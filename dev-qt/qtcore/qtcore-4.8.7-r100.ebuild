@@ -86,7 +86,8 @@ multilib_src_configure() {
 		$(qt_use glib)
 		$(qt_use iconv)
 		$(qt_use icu)
-		$(use ssl && echo openssl)
+		$(use ssl)
+		$(qt_use openssl)
 		$(qt_use qt3support)
 		-nomake tools,examples,demos,docs,translations
 	)
