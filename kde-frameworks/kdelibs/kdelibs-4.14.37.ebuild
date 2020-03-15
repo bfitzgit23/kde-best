@@ -38,7 +38,6 @@ COMMONDEPEND="
 	>=dev-qt/designer-${QT_MINIMAL}:4
 	>=dev-qt/qtcore-${QT_MINIMAL}:4[ssl]
 	>=dev-qt/qtdbus-${QT_MINIMAL}:4
-	>=dev-qt/qtdeclarative-${QT_MINIMAL}:4
 	>=dev-qt/qtgui-${QT_MINIMAL}:4[accessibility,dbus(+)]
 	>=dev-qt/qtscript-${QT_MINIMAL}:4
 	>=dev-qt/qtsvg-${QT_MINIMAL}:4
