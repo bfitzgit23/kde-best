@@ -19,7 +19,6 @@ DEPEND="
 	~dev-qt/qtopengl-${PV}[aqua=,debug=,qt3support=,${MULTILIB_USEDEP}]
 	~dev-qt/qtscript-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	~dev-qt/qtsvg-${PV}[accessibility=,aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	qt3support? ( ~dev-qt/qt3support-${PV}[accessibility=,aqua=,debug=,${MULTILIB_USEDEP}] )
 	webkit? ( ~dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 "
