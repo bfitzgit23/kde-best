@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="4/4.14"
 IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
 libressl lzma cpu_flags_x86_mmx nls openexr opengl +plasma +policykit  spell
-test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
+test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf webkit"
 
 REQUIRED_USE="
 	opengl? ( plasma )
