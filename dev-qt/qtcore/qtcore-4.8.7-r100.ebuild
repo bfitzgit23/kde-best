@@ -12,7 +12,7 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64"
 fi
 
-IUSE="+glib iconv icu libressl +openssl qt3support ssl wkhtmltopdf"
+IUSE="+glib iconv icu +openssl qt3support ssl wkhtmltopdf"
 
 DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP_HACK}]
@@ -20,7 +20,6 @@ DEPEND="
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
 	ssl? (
 		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP_HACK}] )
-		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP_HACK}] )
 	)
 "
 RDEPEND="${DEPEND}"
@@ -38,7 +37,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.5-honor-ExcludeSocketNotifiers-in-glib-event-loop.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.5-qeventdispatcher-recursive.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.6-moc-boost-1.60.patch" # bug 556104
-	"${FILESDIR}/${PN}-4.8.7-libressl.patch" # bug 584796
 	"${FILESDIR}/openssl_1.1.patch"
 )
 
