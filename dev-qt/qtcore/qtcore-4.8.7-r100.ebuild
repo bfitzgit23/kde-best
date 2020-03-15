@@ -12,14 +12,14 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64"
 fi
 
-IUSE="+glib iconv icu libressl qt3support ssl wkhtmltopdf"
+IUSE="+glib iconv icu libressl +openssl qt3support ssl wkhtmltopdf"
 
 DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP_HACK}]
 	iconv? ( >=virtual/libiconv-0-r2[${MULTILIB_USEDEP_HACK}] )
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP_HACK}] )
+		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP_HACK}] )
 		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP_HACK}] )
 	)
 "
@@ -88,7 +88,7 @@ multilib_src_configure() {
 		$(qt_use glib)
 		$(qt_use iconv)
 		$(qt_use icu)
-		$(use ssl && echo -openssl-linked || echo -no-openssl)
+		$(use ssl && echo -openssl-linked || echo openssl)
 		$(qt_use qt3support)
 		-nomake tools,examples,demos,docs,translations
 	)
