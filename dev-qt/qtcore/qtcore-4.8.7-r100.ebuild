@@ -19,7 +19,7 @@ DEPEND="
 	iconv? ( >=virtual/libiconv-0-r2[${MULTILIB_USEDEP_HACK}] )
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
 	ssl? (
-		openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP_HACK}] )
+		openssl? ( >=dev-libs/openssl-1.1.1b-r2:0[${MULTILIB_USEDEP_HACK}] )
 	)
 "
 RDEPEND="${DEPEND}"
