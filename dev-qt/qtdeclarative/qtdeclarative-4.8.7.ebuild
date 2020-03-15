@@ -10,20 +10,15 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-IUSE="+accessibility qt3support webkit"
+IUSE="+accessibility debug"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,qt3support=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[accessibility=,aqua=,debug=,qt3support=,${MULTILIB_USEDEP}]
-	~dev-qt/qtopengl-${PV}[aqua=,debug=,qt3support=,${MULTILIB_USEDEP}]
-	~dev-qt/qtscript-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtsql-${PV}[aqua=,debug=,qt3support=,${MULTILIB_USEDEP}]
-	~dev-qt/qtsvg-${PV}[accessibility=,aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	qt3support? ( ~dev-qt/qt3support-${PV}[accessibility=,aqua=,debug=,${MULTILIB_USEDEP}] )
-	webkit? ( >=dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-"
-RDEPEND="${DEPEND}"
+	~dev-qt/qtcore-${PV}[aqua${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[accessibility,aqua${MULTILIB_USEDEP}]
+	~dev-qt/qtopengl-${PV}[aqua${MULTILIB_USEDEP}]
+	~dev-qt/qtscript-${PV}[aqua${MULTILIB_USEDEP}]
+	~dev-qt/qtsvg-${PV}[accessibility,aqua${MULTILIB_USEDEP}]
+	~dev-qt/qtxmlpatterns-${PV}[aqua${MULTILIB_USEDEP}]"
 
 QT4_TARGET_DIRECTORIES="
 	src/declarative
@@ -35,17 +30,11 @@ QT4_TARGET_DIRECTORIES="
 QCONFIG_ADD="declarative"
 QCONFIG_DEFINE="QT_DECLARATIVE"
 
-pkg_setup() {
-	use webkit && QT4_TARGET_DIRECTORIES+="
-		src/3rdparty/webkit/Source/WebKit/qt/declarative"
-}
 
 multilib_src_configure() {
 	local myconf=(
 		-declarative -no-gtkstyle
 		$(qt_use accessibility)
-		$(qt_use qt3support)
-		$(qt_use webkit)
 	)
 	qt4_multilib_src_configure
 }
