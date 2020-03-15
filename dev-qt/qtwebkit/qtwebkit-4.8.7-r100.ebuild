@@ -19,7 +19,6 @@ DEPEND="
 	>=dev-db/sqlite-3.8.3:3[${MULTILIB_USEDEP_HACK}]
 	~dev-qt/qtcore-${PV}[aqua=,debug=,ssl,wkhtmltopdf=,${MULTILIB_USEDEP_HACK}]
 	~dev-qt/qtgui-${PV}[aqua=,debug=,wkhtmltopdf=,${MULTILIB_USEDEP_HACK}]
-	~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,wkhtmltopdf=,${MULTILIB_USEDEP_HACK}]
 	>=x11-libs/libX11-1.5.0-r1[${MULTILIB_USEDEP_HACK}]
 	>=x11-libs/libXrender-0.9.7-r1[${MULTILIB_USEDEP_HACK}]
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
