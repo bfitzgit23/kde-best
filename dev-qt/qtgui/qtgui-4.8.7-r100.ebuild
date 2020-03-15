@@ -45,7 +45,6 @@ RDEPEND="
 	)
 	cups? ( net-print/cups[${MULTILIB_USEDEP_HACK}] )
 	gtkstyle? (
-		>=x11-libs/cairo-1.12[-qt4(-),${MULTILIB_USEDEP_HACK}]
 		>=x11-libs/gtk+-2.24.23-r1:2[aqua=,${MULTILIB_USEDEP_HACK}]
 	)
 	mng? ( >=media-libs/libmng-1.0.10-r2:=[${MULTILIB_USEDEP_HACK}] )
