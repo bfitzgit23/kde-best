@@ -16,7 +16,6 @@ IUSE="+glib iconv icu libressl qt3support ssl wkhtmltopdf"
 
 DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP_HACK}]
-	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP_HACK}] )
 	iconv? ( >=virtual/libiconv-0-r2[${MULTILIB_USEDEP_HACK}] )
 	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
 	ssl? (
