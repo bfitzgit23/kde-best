@@ -39,7 +39,6 @@ multilib_src_configure() {
 		$(qt_use        oci8     sql-oci    plugin) $(use oci8 && echo "-I${ORACLE_HOME}/include -L${ORACLE_HOME}/$(get_libdir)")
 		$(qt_use        odbc     sql-odbc   plugin) $(use odbc && echo "-I${EPREFIX}/usr/include/iodbc")
 		$(qt_native_use postgres sql-psql   plugin) $(use postgres && multilib_is_native_abi && echo "-I${EPREFIX}/usr/include/postgresql/pgsql")
-		$(qt_use        sqlite   sql-sqlite plugin) $(use sqlite && echo -system-sqlite)
 		-no-sql-db2
 		-no-sql-ibase
 		-no-sql-sqlite2
