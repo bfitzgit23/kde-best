@@ -30,8 +30,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 QT4_TARGET_DIRECTORIES="
-	src/sql
-	src/plugins/sqldrivers"
+	src/sql"
 
 multilib_src_configure() {
 	local myconf=(
