@@ -37,7 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.5-honor-ExcludeSocketNotifiers-in-glib-event-loop.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.5-qeventdispatcher-recursive.patch" # bug 514968
 	"${FILESDIR}/${PN}-4.8.6-moc-boost-1.60.patch" # bug 556104
-	"${FILESDIR}/openssl_1.1.patch"
+	"${FILESDIR}/qt4-openssl-1.1.patch"
 )
 
 QT4_TARGET_DIRECTORIES="
@@ -86,7 +86,7 @@ multilib_src_configure() {
 		$(qt_use glib)
 		$(qt_use iconv)
 		$(qt_use icu)
-		$(use ssl && echo -openssl-linked || echo openssl)
+		$(use ssl && echo openssl)
 		$(qt_use qt3support)
 		-nomake tools,examples,demos,docs,translations
 	)
