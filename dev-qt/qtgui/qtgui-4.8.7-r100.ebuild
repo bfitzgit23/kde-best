@@ -44,7 +44,6 @@ RDEPEND="
 		xv? ( >=x11-libs/libXv-1.0.7-r1[${MULTILIB_USEDEP_HACK}] )
 	)
 	cups? ( net-print/cups[${MULTILIB_USEDEP_HACK}] )
-	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP_HACK}] )
 	gtkstyle? (
 		>=x11-libs/cairo-1.12[-qt4(-),${MULTILIB_USEDEP_HACK}]
 		>=x11-libs/gtk+-2.24.23-r1:2[aqua=,${MULTILIB_USEDEP_HACK}]
