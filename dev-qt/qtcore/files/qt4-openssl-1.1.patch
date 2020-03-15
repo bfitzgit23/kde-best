@@ -1,3 +1,14 @@
+Description: Compile with openssl-1.1.0
+ * Most changes are related to openssl structures are now opaque. 
+ * The network/ssl threading setup has been disabled because the
+   old openssl threading model has been removed and is apparently
+   no longer needed.
+ * A number of new functions had to be imported (see changes to
+   src/network/ssl/qsslsocket_openssl_symbols.cpp) 
+Author: Gert Wollny  <gw.fossdev@gmail.com>
+Last-Update: 2016-06-28
+Bug-Debian: http://bugs.debian.org/828522
+
 --- a/src/network/ssl/qsslcertificate.cpp
 +++ b/src/network/ssl/qsslcertificate.cpp
 @@ -259,10 +259,10 @@
