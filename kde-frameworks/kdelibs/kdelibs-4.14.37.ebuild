@@ -14,8 +14,8 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 SLOT="4/4.14"
 IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
-libressl lzma cpu_flags_x86_mmx nls openexr opengl +plasma +policykit qt3support spell
-test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower webkit zeroconf"
+libressl lzma cpu_flags_x86_mmx nls openexr opengl +plasma +policykit  spell
+test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
 REQUIRED_USE="
 	opengl? ( plasma )
@@ -36,7 +36,7 @@ COMMONDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-qt/designer-${QT_MINIMAL}:4
-	>=dev-qt/qtcore-${QT_MINIMAL}:4[qt3support?,ssl]
+	>=dev-qt/qtcore-${QT_MINIMAL}:4[ssl]
 	>=dev-qt/qtdbus-${QT_MINIMAL}:4
 	>=dev-qt/qtdeclarative-${QT_MINIMAL}:4
 	>=dev-qt/qtgui-${QT_MINIMAL}:4[accessibility,dbus(+)]
@@ -79,7 +79,6 @@ COMMONDEPEND="
 	opengl? ( >=dev-qt/qtopengl-${QT_MINIMAL}:4 )
 	plasma? (
 		app-crypt/qca:2[qt4]
-		>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support?]
 	)
 	policykit? ( sys-auth/polkit-qt[qt4] )
 	spell? ( app-text/enchant:= )
@@ -88,7 +87,6 @@ COMMONDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 	)
 	udev? ( virtual/udev )
-	webkit? ( >=dev-qt/qtwebkit-${QT_MINIMAL}:4 )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${COMMONDEPEND}
