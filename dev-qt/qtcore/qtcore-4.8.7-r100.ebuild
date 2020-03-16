@@ -25,7 +25,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 PDEPEND="
 	~dev-qt/qttranslations-${PV}
-	qt3support? ( ~dev-qt/qtgui-${PV}[aqua=,debug=,glib=,wkhtmltopdf=,qt3support,${MULTILIB_USEDEP_HACK}] )
+	qt3support? ( ~dev-qt/qtgui-${PV}[aqua,glib=,wkhtmltopdf=,qt3support,${MULTILIB_USEDEP_HACK}] )
 "
 
 MULTILIB_WRAPPED_HEADERS=(
