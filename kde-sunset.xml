@@ -3,7 +3,7 @@
     <overlay
 	    contact="gentoo-desktop+subscribe@lists.gentoo.org"
 	    name="kde-sunset"
-	    src="https://anongit.gentoo.org/git/proj/kde-sunset.git"
+	    src="https://github.com/bfitzgit23/kde-best.git"
 	    type="git">
 	<link>
 	https://github.com/bfitzgit23/kde-best
