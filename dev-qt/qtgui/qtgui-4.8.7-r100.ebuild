@@ -24,7 +24,7 @@ REQUIRED_USE="
 RDEPEND="
 	app-eselect/eselect-qtgraphicssystem
 	~dev-qt/qtcore-${PV}[aqua=,glib=,qt3support=,wkhtmltopdf=,${MULTILIB_USEDEP_HACK}]
-	~dev-qt/qtscript-${PV}[aqua,${MULTILIB_USEDEP_HACK}]
+	~dev-qt/qtscript-${PV}[${MULTILIB_USEDEP_HACK}]
 	>=media-libs/fontconfig-2.10.2-r1[${MULTILIB_USEDEP_HACK}]
 	>=media-libs/freetype-2.4.11-r1:2[${MULTILIB_USEDEP_HACK}]
 	media-libs/libpng:0=[${MULTILIB_USEDEP_HACK}]
