@@ -14,7 +14,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 SLOT="4/4.14"
 IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
-libressl lzma cpu_flags_x86_mmx nls openexr opengl +plasma +policykit  spell
+libressl lzma cpu_flags_x86_mmx nls openexr opengl +plasma spell
 test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf webkit"
 
 REQUIRED_USE="
@@ -79,7 +79,6 @@ COMMONDEPEND="
 	plasma? (
 		app-crypt/qca:2[qt4]
 	)
-	policykit? ( sys-auth/polkit-qt[qt4] )
 	spell? ( app-text/enchant:= )
 	ssl? (
 		libressl? ( dev-libs/libressl:0= )
@@ -116,7 +115,6 @@ PDEPEND="
 	>=x11-libs/libXtst-1.1.0
 	x11-misc/xdg-utils
 	handbook? ( kde-apps/khelpcenter:* )
-	policykit? ( kde-plasma/polkit-kde-agent )
 "
 
 DOCS=( AUTHORS README{,-WIN32.TXT} TODO )

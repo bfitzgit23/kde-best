@@ -15,7 +15,6 @@ REQUIRED_USE="consolekit? ( !systemd ) systemd? ( !consolekit )"
 
 DEPEND="
 	kde-plasma/libkworkspace:4
-	media-libs/qimageblitz
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp

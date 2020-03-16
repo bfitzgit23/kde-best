@@ -14,7 +14,7 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64"
 fi
 
-IUSE="+accessibility cups egl +glib gtkstyle mng nas nis qt3support tiff trace xinerama +xv wkhtmltopdf"
+IUSE="+accessibility cups +glib gtkstyle mng nas nis qt3support tiff trace xinerama +xv wkhtmltopdf"
 
 REQUIRED_USE="
 	gtkstyle? ( glib )
@@ -44,7 +44,6 @@ RDEPEND="
 		xv? ( >=x11-libs/libXv-1.0.7-r1[${MULTILIB_USEDEP_HACK}] )
 	)
 	cups? ( net-print/cups[${MULTILIB_USEDEP_HACK}] )
-	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP_HACK}] )
 	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP_HACK}] )
 	gtkstyle? (
 		>=x11-libs/cairo-1.12[-qt4(-),${MULTILIB_USEDEP_HACK}]
@@ -102,7 +101,6 @@ pkg_setup() {
 	QCONFIG_REMOVE="no-freetype no-gif no-jpeg no-png no-gui"
 	QCONFIG_DEFINE="$(use accessibility && echo QT_ACCESSIBILITY)
 			$(use cups && echo QT_CUPS)
-			$(use egl && echo QT_EGL)
 			QT_FONTCONFIG QT_FREETYPE
 			$(use gtkstyle && echo QT_STYLE_GTK)
 			QT_IMAGEFORMAT_JPEG QT_IMAGEFORMAT_PNG

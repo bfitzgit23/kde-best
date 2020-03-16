@@ -16,7 +16,6 @@ DESCRIPTION="Plasma: KDE desktop framework"
 KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug gps json +pim python qalculate"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 COMMONDEPEND="
 	dev-libs/libdbusmenu-qt
@@ -38,19 +37,10 @@ COMMONDEPEND="
 	gps? ( >=sci-geosciences/gpsd-2.37 )
 	json? ( dev-libs/qjson )
 	pim? ( $(add_kdeapps_dep kdepimlibs) )
-	python? (
-		${PYTHON_DEPS}
-		>=dev-python/PyQt4-4.4.0[X,${PYTHON_USEDEP}]
-		$(add_kdeapps_dep pykde4 "${PYTHON_USEDEP}")
-	)
 	qalculate? ( sci-libs/libqalculate )
 "
 DEPEND="${COMMONDEPEND}
 	dev-libs/boost
-	x11-proto/compositeproto
-	x11-proto/damageproto
-	x11-proto/fixesproto
-	x11-proto/renderproto
 "
 RDEPEND="${COMMONDEPEND}
 	$(add_kdeapps_dep plasma-runtime)
