@@ -6,17 +6,16 @@ inherit qt4-build-multilib
 MULTILIB_USEDEP_HACK='abi_x86_64(-)?'
 
 DESCRIPTION="The SVG module for the Qt toolkit"
-SRC_URI+=" https://files.adjust.com/qt-${PV}-wkhtmltopdf.patch"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="~amd64"
 fi
 
-IUSE="+accessibility wkhtmltopdf"
+IUSE="+accessibility"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,wkhtmltopdf=,${MULTILIB_USEDEP_HACK}]
-	~dev-qt/qtgui-${PV}[accessibility=,aqua=,debug=,wkhtmltopdf=,${MULTILIB_USEDEP_HACK}]
+	~dev-qt/qtcore-${PV}
+	~dev-qt/qtgui-${PV}
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP_HACK}]
 "
 RDEPEND="${DEPEND}"
@@ -30,7 +29,6 @@ QCONFIG_ADD="svg"
 QCONFIG_DEFINE="QT_SVG"
 
 src_prepare() {
-	use wkhtmltopdf && epatch "${DISTDIR}/qt-${PV}-wkhtmltopdf.patch"
 	qt4-build-multilib_src_prepare
 }
 
