@@ -44,7 +44,10 @@ RDEPEND="
 		xv? ( >=x11-libs/libXv-1.0.7-r1[${MULTILIB_USEDEP_HACK}] )
 	)
 	cups? ( net-print/cups[${MULTILIB_USEDEP_HACK}] )
+	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP_HACK}] )
+	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP_HACK}] )
 	gtkstyle? (
+		>=x11-libs/cairo-1.12[-qt4(-),${MULTILIB_USEDEP_HACK}]
 		>=x11-libs/gtk+-2.24.23-r1:2[aqua=,${MULTILIB_USEDEP_HACK}]
 	)
 	mng? ( >=media-libs/libmng-1.0.10-r2:=[${MULTILIB_USEDEP_HACK}] )
@@ -125,10 +128,12 @@ multilib_src_configure() {
 	local myconf=(
 		$(qt_use accessibility)
 		$(qt_use cups)
+		$(qt_use glib)
 		$(qt_use mng libmng system)
 		$(qt_use nas nas-sound system)
 		$(qt_use nis)
 		$(qt_use tiff libtiff system)
+		$(qt_use egl)
 		$(qt_use qt3support)
 		$(qt_use gtkstyle)
 		$(qt_use xinerama)
