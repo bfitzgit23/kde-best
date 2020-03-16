@@ -13,7 +13,7 @@ fi
 IUSE="+jit"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[aqua,${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
