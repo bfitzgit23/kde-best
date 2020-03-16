@@ -7,6 +7,7 @@ MULTILIB_USEDEP_HACK='abi_x86_64(-)?'
 
 DESCRIPTION="The GUI module for the Qt toolkit"
 SRC_URI+=" https://dev.gentoo.org/~pesa/patches/${PN}-systemtrayicon-plugin-system.patch
+	https://files.adjust.com/qt-${PV}-wkhtmltopdf.patch
 "
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
@@ -43,7 +44,10 @@ RDEPEND="
 		xv? ( >=x11-libs/libXv-1.0.7-r1[${MULTILIB_USEDEP_HACK}] )
 	)
 	cups? ( net-print/cups[${MULTILIB_USEDEP_HACK}] )
+	egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP_HACK}] )
+	glib? ( dev-libs/glib:2[${MULTILIB_USEDEP_HACK}] )
 	gtkstyle? (
+		>=x11-libs/cairo-1.12[-qt4(-),${MULTILIB_USEDEP_HACK}]
 		>=x11-libs/gtk+-2.24.23-r1:2[aqua=,${MULTILIB_USEDEP_HACK}]
 	)
 	mng? ( >=media-libs/libmng-1.0.10-r2:=[${MULTILIB_USEDEP_HACK}] )
