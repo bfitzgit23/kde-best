@@ -25,6 +25,7 @@ QCONFIG_DEFINE="QT_SCRIPT"
 PATCHES=(
 	"${FILESDIR}/4.8.6-javascriptcore-x32.patch" 
 	"${FILESDIR}/gcc-asm-volatile-deprecated.patch" 
+    "${FILESDIR}/qtscript-4.8.7-gcc-6.0.patch"
 )
 
 multilib_src_configure() {
