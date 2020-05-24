@@ -11,13 +11,6 @@ KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 IUSE="debug pam"
 
 DEPEND="
-	pam? ( virtual/pam )
-"
-RDEPEND="${DEPEND}
-	pam? ( || (
-		kde-plasma/kdebase-pam
-		kde-plasma/kscreenlocker:5
-	) )
 "
 
 src_prepare() {
