@@ -1,12 +1,3 @@
-From: Than Ngo <than@redhat.com>
-Date: Thu, 20 Oct 2016 11:15:33 +0200
-Subject: [PATCH] fix build issues with gcc6
-
-This patch solves two issues:
- - Use the correct key for the compiler.
- - Avoid a shift overflow.
-
-Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---
  configure                            | 4 ++--
  src/xmlpatterns/api/qcoloroutput_p.h | 4 ++--

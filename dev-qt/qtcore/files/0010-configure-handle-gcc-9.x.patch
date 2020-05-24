@@ -1,8 +1,3 @@
-From: Michael Olbrich <m.olbrich@pengutronix.de>
-Date: Sat, 18 Apr 2020 10:52:34 +0200
-Subject: [PATCH] configure: handle gcc 9.x
-
-Signed-off-by: Michael Olbrich <m.olbrich@pengutronix.de>
 ---
  configure | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
