@@ -14,7 +14,7 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64"
 fi
 
-IUSE="+accessibility cups +glib gtkstyle mng nas nis qt3support tiff trace xinerama +xv wkhtmltopdf"
+IUSE="+accessibility cups +glib gtkstyle mng nas nis qt3support tiff trace xinerama +xv wkhtmltopdf egl"
 
 REQUIRED_USE="
 	gtkstyle? ( glib )
