@@ -42,7 +42,6 @@ PATCHES=(
 	"${FILESDIR}/kubuntu_14_systemtrayicon.diff"
 	"${FILESDIR}/kde4-settings.patch"
 	"${FILESDIR}/0009-fix-build-issues-with-gcc6.patch"
-	"${FILESDIR}/gcc9.patch"
 	"${FILESDIR}/qt4-glibc-2.25.patch"
 	"${FILESDIR}/qt4-icu59.patch"
 )
