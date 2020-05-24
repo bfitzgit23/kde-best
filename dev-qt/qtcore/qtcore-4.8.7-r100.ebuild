@@ -41,8 +41,6 @@ PATCHES=(
 	"${FILESDIR}/improve-cups-support.patch"
 	"${FILESDIR}/kubuntu_14_systemtrayicon.diff"
 	"${FILESDIR}/kde4-settings.patch"
-	"${FILESDIR}/l-qclipboard_fix_recursive.patch"
-	"${FILESDIR}/l-qclipboard_delay.patch"
 	"${FILESDIR}/qt4-gcc6.patch"
 	"${FILESDIR}/qt4-gcc8.patch"
 	"${FILESDIR}/qt4-gcc9.patch"
