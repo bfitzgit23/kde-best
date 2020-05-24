@@ -41,7 +41,6 @@ PATCHES=(
 	"${FILESDIR}/improve-cups-support.patch"
 	"${FILESDIR}/kubuntu_14_systemtrayicon.diff"
 	"${FILESDIR}/kde4-settings.patch"
-	"${FILESDIR}/glib-honor-ExcludeSocketNotifiers-flag.diff"
 	"${FILESDIR}/l-qclipboard_fix_recursive.patch"
 	"${FILESDIR}/l-qclipboard_delay.patch"
 	"${FILESDIR}/qt4-gcc6.patch"
