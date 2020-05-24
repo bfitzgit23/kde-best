@@ -92,7 +92,6 @@ multilib_src_configure() {
 		-no-xrandr -no-xrender -no-mitshm -no-fontconfig -no-freetype -no-xinput -no-xkb
 		$(qt_use glib)
 		$(qt_use iconv)
-		$(qt_use icu)
 		$(use ssl && echo -openssl-linked || echo -no-openssl)
 		$(qt_use qt3support)
 	)
