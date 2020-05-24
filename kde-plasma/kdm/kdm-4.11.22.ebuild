@@ -24,10 +24,6 @@ DEPEND="
 		sys-auth/consolekit
 	)
 	kerberos? ( virtual/krb5 )
-	pam? (
-		kde-plasma/kcheckpass:4
-		virtual/pam
-	)
 	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}
