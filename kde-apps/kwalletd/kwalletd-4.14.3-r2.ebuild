@@ -1,5 +1,6 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
+# $Id$
 
 EAPI=5
 
@@ -14,7 +15,7 @@ DEPEND="
 	dev-libs/libgcrypt:0=
 	gpg? (
 		app-crypt/gpgme
-		$(add_kdeapps_dep kdepimlibs)
+		$(add_kdeapps_dep kdepimlibs4)
 	)
 "
 RDEPEND="${DEPEND}"
