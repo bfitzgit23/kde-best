@@ -1,4 +1,3 @@
-diff -up qt-everywhere-opensource-src-4.8.7/configure.gcc6 qt-everywhere-opensource-src-4.8.7/configure
 --- qt-everywhere-opensource-src-4.8.7/configure.gcc6	2016-04-15 07:04:19.430268222 -0500
 +++ qt-everywhere-opensource-src-4.8.7/configure	2016-04-15 07:05:22.157568689 -0500
 @@ -7744,7 +7744,7 @@ case "$XPLATFORM" in
