@@ -12,12 +12,11 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="amd64"
 fi
 
-IUSE="+glib iconv icu +openssl qt3support ssl wkhtmltopdf"
+IUSE="+glib iconv +openssl qt3support ssl wkhtmltopdf"
 
 DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP_HACK}]
 	iconv? ( >=virtual/libiconv-0-r2[${MULTILIB_USEDEP_HACK}] )
-	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
 	ssl? (
 		openssl? ( >=dev-libs/openssl-1.1.1b-r2:0[${MULTILIB_USEDEP_HACK}] )
 	)
@@ -89,7 +88,6 @@ multilib_src_configure() {
 		-no-xrandr -no-xrender -no-mitshm -no-fontconfig -no-freetype -no-xinput -no-xkb
 		$(qt_use glib)
 		$(qt_use iconv)
-		$(qt_use icu)
 		$(use ssl)
 		$(qt_use openssl)
 		$(qt_use qt3support)
