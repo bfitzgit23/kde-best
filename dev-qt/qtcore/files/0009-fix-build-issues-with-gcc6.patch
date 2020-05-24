@@ -1,42 +1,59 @@
----
- configure                            | 4 ++--
- src/xmlpatterns/api/qcoloroutput_p.h | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/configure b/configure
-index 10ad7ca0b0b7..a8e6dc141eda 100755
---- a/configure
-+++ b/configure
-@@ -7734,7 +7734,7 @@ case "$XPLATFORM" in
-     *-g++*)
- 	# Check gcc's version
- 	case "$(${QMAKE_CONF_COMPILER} -dumpversion)" in
--	    5*|4*|3.4*)
-+	    8*|7*|6*|5*|4*|3.4*)
- 		;;
-             3.3*)
-                 canBuildWebKit="no"
-@@ -8050,7 +8050,7 @@ g++*)
-     3.*)
-         COMPILER_VERSION="3.*"
-         ;;
--    5*|4.*)
-+    8*|7*|6*|5*|4.*)
-         COMPILER_VERSION="4"
-         ;;
-     *)
-diff --git a/src/xmlpatterns/api/qcoloroutput_p.h b/src/xmlpatterns/api/qcoloroutput_p.h
-index 7911e8962501..be284d14096e 100644
---- a/src/xmlpatterns/api/qcoloroutput_p.h
-+++ b/src/xmlpatterns/api/qcoloroutput_p.h
-@@ -70,8 +70,8 @@ namespace QPatternist
-             ForegroundShift = 10,
-             BackgroundShift = 20,
-             SpecialShift    = 20,
--            ForegroundMask  = ((1 << ForegroundShift) - 1) << ForegroundShift,
--            BackgroundMask  = ((1 << BackgroundShift) - 1) << BackgroundShift
-+            ForegroundMask  = 0x1f << ForegroundShift,
-+            BackgroundMask  = 0x7 << BackgroundShift
-         };
+--- qt-everywhere-opensource-src-4.8.7-orig/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp	2015-05-08 00:14:47.000000000 +1000
++++ qt-everywhere-opensource-src-4.8.7/src/3rdparty/javascriptcore/JavaScriptCore/yarr/RegexCompiler.cpp	2016-05-08 12:58:46.000000000 +1000
+@@ -719,7 +719,7 @@
  
-     public:
+     constructor.setupOffsets();
+ 
+-    return false;
++    return NULL;
+ };
+ 
+ 
+--- qt-everywhere-opensource-src-4.8.7-orig/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h	2015-05-08 00:14:48.000000000 +1000
++++ qt-everywhere-opensource-src-4.8.7/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.h	2016-05-07 21:55:51.000000000 +1000
+@@ -317,7 +317,7 @@
+         TransitionTable* transitionTable = new TransitionTable;
+         setTransitionTable(transitionTable);
+         if (existingTransition)
+-            add(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(existingTransition->m_nameInPrevious.get()), existingTransition->m_attributesInPrevious), existingTransition, existingTransition->m_specificValueInPrevious);
++            add(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(existingTransition->m_nameInPrevious.get()), static_cast<unsigned int>(existingTransition->m_attributesInPrevious)), existingTransition, existingTransition->m_specificValueInPrevious);
+     }
+ } // namespace JSC
+ 
+--- qt-everywhere-opensource-src-4.8.7-orig/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp	2015-05-08 00:14:48.000000000 +1000
++++ qt-everywhere-opensource-src-4.8.7/src/3rdparty/javascriptcore/JavaScriptCore/runtime/Structure.cpp	2016-05-07 21:38:16.000000000 +1000
+@@ -157,7 +157,7 @@
+ {
+     if (m_previous) {
+         if (m_nameInPrevious)
+-            m_previous->table.remove(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(m_nameInPrevious.get()), m_attributesInPrevious), m_specificValueInPrevious);
++            m_previous->table.remove(StructureTransitionTableHash::Key(RefPtr<UString::Rep>(m_nameInPrevious.get()), static_cast<unsigned int>(m_attributesInPrevious)), m_specificValueInPrevious);
+         else
+             m_previous->table.removeAnonymousSlotTransition(m_anonymousSlotsInPrevious);
+ 
+--- qt-everywhere-opensource-src-4.8.7-orig/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h	2015-05-08 00:14:48.000000000 +1000
++++ qt-everywhere-opensource-src-4.8.7/src/3rdparty/javascriptcore/JavaScriptCore/wtf/TypeTraits.h	2016-05-05 21:06:32.000000000 +1000
+@@ -25,8 +25,12 @@
+ #include "Platform.h"
+ 
+ #if (defined(__GLIBCXX__) && (__GLIBCXX__ >= 20070724) && defined(__GXX_EXPERIMENTAL_CXX0X__)) || (defined(_MSC_VER) && (_MSC_VER >= 1600))
++#if (__cplusplus >= 201402L)
++#include <tr1/type_traits>
++#else
+ #include <type_traits>
+ #endif
++#endif
+ 
+ namespace WTF {
+ 
+--- qt-everywhere-opensource-src-4.8.7-orig/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h	2015-05-08 00:14:48.000000000 +1000
++++ qt-everywhere-opensource-src-4.8.7/src/3rdparty/javascriptcore/JavaScriptCore/wtf/HashTable.h	2016-05-05 21:07:05.000000000 +1000
+@@ -257,7 +257,7 @@
+ 
+     using std::swap;
+ 
+-#if !COMPILER(MSVC) && !OS(QNX) && !defined(_LIBCPP_VERSION)
++#if !COMPILER(MSVC) && !OS(QNX) && !defined(_LIBCPP_VERSION) && (__cplusplus < 201402L)
+     // The Dinkumware C++ library (used by MSVC and QNX) and clang's libc++ have a swap for pairs defined.
+ 
+     // swap pairs by component, in case of pair members that specialize swap

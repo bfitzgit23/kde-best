@@ -1,10 +1,5 @@
----
- configure | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/configure b/configure
-index a8e6dc141eda..39c895b091f3 100755
---- a/configure
+--- a/configur
 +++ b/configure
 @@ -7734,7 +7734,7 @@ case "$XPLATFORM" in
      *-g++*)
