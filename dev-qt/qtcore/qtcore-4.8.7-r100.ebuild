@@ -39,7 +39,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.8.6-moc-boost-1.60.patch" # bug 556104
 	"${FILESDIR}/qt4-openssl-1.1.patch"
 	"${FILESDIR}/improve-cups-support.patch"
-	"${FILESDIR}/moc-boost-workaround.patch"
 	"${FILESDIR}/kubuntu_14_systemtrayicon.diff"
 	"${FILESDIR}/kde4-settings.patch"
 	"${FILESDIR}/glib-honor-ExcludeSocketNotifiers-flag.diff"
