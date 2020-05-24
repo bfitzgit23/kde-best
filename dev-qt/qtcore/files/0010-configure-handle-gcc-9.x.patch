@@ -1,7 +1,6 @@
-
---- a/configur
-+++ b/configure
-@@ -7734,7 +7734,7 @@ case "$XPLATFORM" in
+--- qt-everywhere-opensource-src-4.8.7/configure~	2019-09-14 20:06:01.000000000 +0200
++++ qt-everywhere-opensource-src-4.8.7/configure	2019-09-14 20:40:44.545345003 +0200
+@@ -7753,7 +7753,7 @@
      *-g++*)
  	# Check gcc's version
  	case "$(${QMAKE_CONF_COMPILER} -dumpversion)" in
