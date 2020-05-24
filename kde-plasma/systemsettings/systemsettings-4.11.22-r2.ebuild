@@ -35,8 +35,6 @@ COMMONDEPEND="
 	usb? ( virtual/libusb:0 )
 "
 DEPEND="${COMMONDEPEND}
-	x11-proto/kbproto
-	x11-proto/xextproto
 "
 RDEPEND="${COMMONDEPEND}
 	>=kde-frameworks/oxygen-icons-5.19.0:5
