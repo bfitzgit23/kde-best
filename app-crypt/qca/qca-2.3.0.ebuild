@@ -12,7 +12,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 LICENSE="LGPL-2.1"
 SLOT="2"
 KEYWORDS="amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
-IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl test"
+IUSE="botan debug doc examples gcrypt gpg logger nss pkcs11 sasl softstore +ssl test qt4"
 
 RESTRICT="!test? ( test )"
 
