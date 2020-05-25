@@ -14,7 +14,6 @@ IUSE="debug"
 DEPEND="
 	kde-frameworks/kactivities:4
 	kde-plasma/kephal:4
-	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	x11-libs/libX11
 "

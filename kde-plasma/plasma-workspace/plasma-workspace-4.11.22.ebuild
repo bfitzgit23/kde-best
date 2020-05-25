@@ -9,7 +9,7 @@ KMNAME="kde-workspace"
 KMMODULE="plasma"
 PYTHON_COMPAT=( python2_7 )
 OPENGL_REQUIRED="always"
-WEBKIT_REQUIRED="always"
+WEBKIT_REQUIRED="never"
 inherit python-single-r1 kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
@@ -18,11 +18,8 @@ IUSE="debug gps json +pim python qalculate"
 
 
 COMMONDEPEND="
-	dev-libs/libdbusmenu-qt
-	>=dev-qt/qtcore-4.8.4-r3:4
 	kde-frameworks/kactivities:4
 	kde-plasma/kephal:4
-	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmaclock:4[pim?]
 	kde-plasma/libplasmagenericshell:4

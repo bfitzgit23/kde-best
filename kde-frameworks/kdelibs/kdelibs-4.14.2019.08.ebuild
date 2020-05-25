@@ -18,7 +18,7 @@ LICENSE="LGPL-2.1"
 SLOT="4/4.14"
 IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
 libressl lzma cpu_flags_x86_mmx nls openexr plasma +policykit qt3support
-spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf webkit opengl"
+spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf opengl"
 
 REQUIRED_USE="
 	udisks? ( udev )
@@ -51,10 +51,6 @@ COMMONDEPEND="
 	media-libs/freetype:2
 	media-libs/giflib:=
 	media-libs/libpng:0=
-	|| (
-		media-libs/phonon-qt4
-		media-libs/phonon[qt4]
-	)
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libICE
@@ -107,7 +103,6 @@ DEPEND="${COMMONDEPEND}
 	test? ( dev-util/cppunit )
 "
 RDEPEND="${COMMONDEPEND}
-	!dev-qt/qtphonon
 	>=app-crypt/gnupg-2.0.11
 	app-misc/ca-certificates
 	kde-frameworks/kdelibs-env:4
@@ -144,7 +139,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.9.3-werror.patch"
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
-	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
 	"${FILESDIR}/${PN}-4.14.35-3dnow.patch"
 	"${FILESDIR}/${PN}-4.14.35-kde3support.patch"
 	"${FILESDIR}/${PN}-4.14.35-plasma4.patch"

@@ -17,7 +17,6 @@ RESTRICT=test
 
 # krunner is only needed to generate dbus interface for lancelot
 COMMON_DEPEND="
-	app-crypt/qca:2[qt4(+)]
 	kde-plasma/krunner:4
 	kde-plasma/plasma-workspace:4
 	x11-misc/shared-mime-info
@@ -27,7 +26,6 @@ COMMON_DEPEND="
 	fcitx? ( app-i18n/fcitx[dbus(+)] )
 	ibus? ( app-i18n/ibus )
 	json? ( dev-libs/qjson )
-	oauth? ( dev-libs/qoauth:0 )
 	pim? ( $(add_kdeapps_dep kdepimlibs) )
 	qalculate? ( sci-libs/libqalculate )
 	qwt? ( x11-libs/qwt:5 )
@@ -44,13 +42,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DDBUS_INTERFACES_INSTALL_DIR="${EPREFIX}/usr/share/dbus-1/interfaces/"
 		-DWITH_Nepomuk=OFF
-		$(cmake-utils_use_with attica LibAttica)
 		$(cmake-utils_use_with desktopglobe Marble)
 		$(cmake-utils_use_find_package eigen Eigen2)
 		$(cmake-utils_use_with exif Kexiv2)
 		$(cmake-utils_use_build ibus)
 		$(cmake-utils_use_with json QJSON)
-		$(cmake-utils_use_with oauth QtOAuth)
 		$(cmake-utils_use_with pim KdepimLibs)
 		$(cmake-utils_use_with qalculate)
 		$(cmake-utils_use_with qwt)

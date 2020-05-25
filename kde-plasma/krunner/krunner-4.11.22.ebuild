@@ -16,7 +16,6 @@ DEPEND="
 	kde-plasma/kcheckpass:4
 	kde-plasma/kephal:4
 	kde-plasma/ksmserver:4
-	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmagenericshell:4
 	x11-libs/libX11
@@ -28,7 +27,6 @@ RDEPEND="${DEPEND}"
 KMEXTRACTONLY="
 	libs/kdm/
 	libs/kephal/
-	libs/ksysguard/
 	libs/kworkspace/
 	libs/plasmagenericshell/
 	kcheckpass/

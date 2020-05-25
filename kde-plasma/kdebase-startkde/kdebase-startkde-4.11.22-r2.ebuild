@@ -78,7 +78,6 @@ RDEPEND="
 		kde-plasma/klipper:4
 		kde-plasma/kmenuedit:4
 		kde-plasma/kstyles:4
-		kde-plasma/ksysguard:4
 		kde-plasma/ksystraycmd:4
 		kde-plasma/kwrited:4
 		kde-plasma/libkworkspace:4

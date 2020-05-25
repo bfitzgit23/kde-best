@@ -38,7 +38,6 @@ KMEXTRA="
 "
 
 PATCHES=(
-	"${FILESDIR}/${P}-webkit.patch"
 	"${FILESDIR}/${P}-perl-5.22.patch"
 )
 
@@ -51,7 +50,6 @@ src_configure() {
 		-DWITH_OpenEXR=$(usex openexr)
 		-DWITH_Samba=$(usex samba)
 		-DWITH_LibSSH=$(usex sftp)
-		-DWITH_KDEWEBKIT=$(usex webkit)
 	)
 
 	kde4-meta_src_configure

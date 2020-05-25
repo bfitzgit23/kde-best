@@ -48,7 +48,6 @@ DEPEND="${RDEPEND}
 "
 PDEPEND="
 	gstreamer? ( >=media-libs/phonon-gstreamer-4.9.0[qt4?,qt5?] )
-	vlc? ( >=media-libs/phonon-vlc-0.9.0[qt4?,qt5?] )
 "
 
 PATCHES=( "${FILESDIR}/${PN}-4.7.0-plugin-install.patch" )
