@@ -8,7 +8,7 @@ inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils toolchain-funcs xd
 
 DESCRIPTION="Libraries needed for programs by KDE"
 HOMEPAGE="https://www.kde.org/"
-SRC_URI="mirror://kde/stable/applications/17.08.2/src/${P}.tar.xz"
+SRC_URI="https://download.kde.org/stable/applications/17.08.3/src/kdelibs-4.14.38.tar.xz"
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
@@ -135,7 +135,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.9.3-werror.patch"
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
-	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
 	"${FILESDIR}/${PN}-4.14.35-3dnow.patch"
 	"${FILESDIR}/${PN}-4.14.35-kde3support.patch"
 	"${FILESDIR}/${PN}-4.14.35-plasma4.patch"
