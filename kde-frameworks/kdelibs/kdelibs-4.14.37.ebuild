@@ -139,7 +139,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.14.35-plasma4.patch"
 	"${FILESDIR}/kde-applications-menu.patch"
 	"${FILESDIR}/kdelibs-openssl-1.1.patch"
-	"${FILESDIR}/qt4.patch"
 )
 
 src_prepare() {
