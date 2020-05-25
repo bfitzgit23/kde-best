@@ -1,4 +1,3 @@
-diff -up kdelibs-4.14.16/CMakeLists.txt.webkit kdelibs-4.14.16/CMakeLists.txt
 --- kdelibs-4.14.16/CMakeLists.txt.webkit	2016-01-07 00:02:22.000000000 +0100
 +++ kdelibs-4.14.16/CMakeLists.txt	2016-01-28 13:03:53.556194927 +0100
 @@ -356,7 +356,6 @@ if(NOT WINCE)
