@@ -88,7 +88,6 @@ COMMONDEPEND="
 		!libressl? ( dev-libs/openssl:0= )
 	)
 	udev? ( virtual/udev )
-	webkit? ( >=dev-qt/qtwebkit-${QT_MINIMAL}:4 )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${COMMONDEPEND}
@@ -192,7 +191,6 @@ src_configure() {
 		-DWITH_OpenSSL=$(usex ssl)
 		-DWITH_UDev=$(usex udev)
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
-		-DWITH_KDEWEBKIT=$(usex webkit)
 		-DWITH_Avahi=$(usex zeroconf)
 	)
 
