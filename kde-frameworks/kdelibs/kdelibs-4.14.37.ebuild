@@ -8,7 +8,7 @@ inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils toolchain-funcs xd
 
 DESCRIPTION="Libraries needed for programs by KDE"
 HOMEPAGE="https://www.kde.org/"
-SRC_URI="https://download.kde.org/stable/applications/17.08.3/src/kdelibs-4.14.38.tar.xz"
+SRC_URI="https://download.kde.org/stable/applications/17.08.3/src/kdelibs-4.14.37.tar.xz"
 
 KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
