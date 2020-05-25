@@ -37,7 +37,7 @@ QCONFIG_DEFINE="QT_WEBKIT"
 
 src_prepare() {
 	use wkhtmltopdf && epatch "${DISTDIR}/qt-${PV}-wkhtmltopdf.patch"
-    epatch "${DISTDIR}/qtwebkit-4.8.7-gcc-6.0.patch"
+    epatch "${FILESDIR}/qtwebkit-4.8.7-gcc-6.0.patch"
 
 	# Remove -Werror from CXXFLAGS
 	sed -i -e '/QMAKE_CXXFLAGS\s*+=/ s:-Werror::g' \
