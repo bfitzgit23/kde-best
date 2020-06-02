@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,42 @@ SRC_URI="mirror://kde/stable/${PN}-2.3/${MY_PV}/src/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="4"
-KEYWORDS="amd64 arm ia64 ~mips ppc ppc64 x86"
+
+# masked due to build error:
+# In file included from /usr/include/unicode/utypes.h:38:0,
+#                  from /usr/include/unicode/ucnv_err.h:88,
+#                  from /usr/include/unicode/ucnv.h:52,
+#                  from /usr/include/libxml2/libxml/encoding.h:31,
+#                  from /usr/include/libxml2/libxml/parser.h:810,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/xml/XSLStyleSheet.h:32,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/xml/XSLTProcessor.h:29,
+#                  from generated/JSXSLTProcessor.h:27,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/bindings/js/JSDOMWindowCustom.cpp:54:
+# /usr/include/unicode/umachine.h: At global scope:
+# /usr/include/unicode/umachine.h:347:22: error: conflicting declaration ‘typedef char16_t UChar’
+#      typedef char16_t UChar;
+#                       ^~~~~
+#
+# In file included from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/unicode/Unicode.h:32:0,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/StringHasher.h:24,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/text/StringImpl.h:30,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/text/AtomicStringImpl.h:24,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/text/AtomicString.h:24,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/text/AtomicStringHash.h:32,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/dom/EventListenerMap.h:39,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/dom/EventTarget.h:35,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/page/DOMWindow.h:31,
+#                  from generated/JSDOMWindow.h:24,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/bindings/js/JSDOMWindowCustom.h:22,
+#                  from /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WebCore/bindings/js/JSDOMWindowCustom.cpp:22:
+# /var/tmp/portage/dev-qt/qtwebkit-4.10.4/work/Source/WTF/wtf/unicode/qt4/UnicodeQt4.h:68:18: note: previous declaration as ‘typedef uint16_t UChar’
+#  typedef uint16_t UChar;
+#                   ^~~~~
+#
+# Cause is "fails to build with ICU >=59" that was un-masked by profile 17.0
+#
+# KEYWORDS="~amd64"
+
 IUSE="debug +gstreamer"
 
 RDEPEND="
