@@ -114,7 +114,6 @@ PDEPEND="
 	virtual/pkgconfig
 	>=x11-libs/libXtst-1.1.0
 	x11-misc/xdg-utils
-	x11-proto/xf86vidmodeproto
 	handbook? ( kde-apps/khelpcenter:* )
 	policykit? ( kde-plasma/polkit-kde-agent )
 "
