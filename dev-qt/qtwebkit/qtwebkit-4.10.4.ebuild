@@ -93,6 +93,7 @@ S=${WORKDIR}
 PATCHES=(
 	"${FILESDIR}/${PV}-gcc5.patch"
 	"${FILESDIR}/${PV}-use-correct-icu-typedef.patch"
+	"${FILESDIR}/4.8.2-javascriptcore-x32.patch"
 )
 
 src_prepare() {
