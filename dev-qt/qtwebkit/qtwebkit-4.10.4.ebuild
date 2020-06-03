@@ -47,7 +47,7 @@ SLOT="4"
 #
 # Cause is "fails to build with ICU >=59" that was un-masked by profile 17.0
 #
-# KEYWORDS="~amd64"
+ KEYWORDS="~amd64"
 
 IUSE="debug +gstreamer"
 
