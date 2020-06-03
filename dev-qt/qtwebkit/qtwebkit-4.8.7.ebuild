@@ -20,7 +20,6 @@ DEPEND="
 	>=dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	>=x11-libs/libX11-1.5.0-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/libXrender-0.9.7-r1[${MULTILIB_USEDEP}]
-	icu? ( >=dev-libs/icu-67.1:=[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 
@@ -61,7 +60,6 @@ multilib_src_configure() {
 	local myconf=(
 		-webkit
 		-system-sqlite
-		$(qt_use icu)
 		$(qt_use jit javascript-jit)
 		-DENABLE_VIDEO=0
 	)
