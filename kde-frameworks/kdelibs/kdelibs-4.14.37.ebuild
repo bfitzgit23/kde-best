@@ -1,24 +1,21 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-QT_MINIMAL="4.8.2020.02"
-MY_P="${PN}-4.14.37"
+QT_MINIMAL="4.8.7"
 inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="Libraries needed for programs by KDE"
 HOMEPAGE="https://www.kde.org/"
-SRC_URI="mirror://kde/stable/applications/17.08.2/src/${MY_P}.tar.xz
-	https://salsa.debian.org/qt-kde-team/kde/kde4libs/-/archive/0fda019c2666ce72593b360757977ccf6b3262cf/patches.tar.bz2?path=debian/patches -> kde4libs-debian-patches-${PV}.tar.bz2
-"
+SRC_URI="mirror://kde/stable/applications/17.08.2/src/${P}.tar.xz"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 SLOT="4/4.14"
 IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
 libressl lzma cpu_flags_x86_mmx nls openexr plasma +policykit qt3support
-spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf opengl"
+spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf"
 
 REQUIRED_USE="
 	udisks? ( udev )
@@ -33,10 +30,7 @@ COMMONDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-lang/perl
 	>=dev-libs/libattica-0.4.2
-	|| (
-		dev-libs/libdbusmenu-qt4
-		dev-libs/libdbusmenu-qt[qt4]
-	)
+	dev-libs/libdbusmenu-qt[qt4]
 	dev-libs/libpcre[unicode]
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -51,10 +45,7 @@ COMMONDEPEND="
 	media-libs/freetype:2
 	media-libs/giflib:=
 	media-libs/libpng:0=
-	|| (
-		media-libs/phonon-qt4
-		media-libs/phonon[qt4]
-	)
+	media-libs/phonon[qt4]
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libICE
@@ -85,10 +76,7 @@ COMMONDEPEND="
 		media-libs/ilmbase:=
 	)
 	plasma? (
-		|| (
-			app-crypt/qca:2[qt4]
-			app-crypt/qca-qt4:2
-		)
+		app-crypt/qca:2[qt4]
 		>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support?]
 	)
 	policykit? ( sys-auth/polkit-qt[qt4] )
@@ -124,18 +112,17 @@ RDEPEND="${COMMONDEPEND}
 PDEPEND="
 	dev-util/automoc
 	virtual/pkgconfig
-	x11-base/xorg-proto
 	>=x11-libs/libXtst-1.1.0
 	x11-misc/xdg-utils
+	x11-proto/xf86vidmodeproto
 	handbook? ( kde-apps/khelpcenter:* )
 	policykit? ( kde-plasma/polkit-kde-agent )
 "
 
-S="${WORKDIR}/${MY_P}"
-
 DOCS=( AUTHORS README{,-WIN32.TXT} TODO )
 
 PATCHES=(
+	"${FILESDIR}/dist/01_gentoo_set_xdg_menu_prefix-1.patch"
 	"${FILESDIR}/dist/02_gentoo_append_xdg_config_dirs-1.patch"
 	"${FILESDIR}/${PN}-4.14.5-fatalwarnings.patch"
 	"${FILESDIR}/${PN}-4.14.5-mimetypes.patch"
@@ -154,25 +141,13 @@ PATCHES=(
 src_prepare() {
 	cmake-utils_src_prepare
 
+	# Rename applications.menu (needs 01_gentoo_set_xdg_menu_prefix-1.patch to work)
+	sed -e 's|FILES[[:space:]]applications.menu|FILES applications.menu RENAME kde-4-applications.menu|g' \
+		-i kded/CMakeLists.txt || die "Sed on CMakeLists.txt for applications.menu failed."
+
 	sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
 		plasma/CMakeLists.txt plasma/tests/CMakeLists.txt includes/CMakeLists.txt \
 		|| die "failed to sed out QT_QTOPENGL_FOUND"
-
-	local DEBIAN_PATCHES="$(echo "${WORKDIR}/kde4libs-"*"-debian-patches/debian/patches/")" p
-	while read -u3 p; do
-		case "${p}" in
-		add_debian_build_type.diff | \
-		debian_menu.diff | \
-		debian_standardsdirtest.diff | \
-		hardcode_ptm_device.diff | \
-		qt4_designer_plugins_path.diff | \
-		default_kde4_xdg_menu_prefix.diff | \
-		use_dejavu_as_default_font.diff )
-			continue
-			;;
-		esac
-		epatch "${DEBIAN_PATCHES}/${p}"
-	done 3<"${DEBIAN_PATCHES}/series"
 }
 
 src_configure() {
