@@ -27,7 +27,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/4.8.2-javascriptcore-x32.patch"
+	"${FILESDIR}/4.10.4-javascriptcore-x32.patch"
 )
 
 QT4_TARGET_DIRECTORIES="
