@@ -35,7 +35,7 @@ DEPEND="${COMMON_DEPEND}
 	eigen? ( dev-cpp/eigen:2 )
 "
 RDEPEND="${COMMON_DEPEND}
-	app-crypt/qca:2[ssl]
+	app-crypt/qca-qt4[ssl]
 "
 
 src_configure() {

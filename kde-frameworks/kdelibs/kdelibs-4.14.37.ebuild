@@ -76,13 +76,12 @@ COMMONDEPEND="
 		media-libs/ilmbase:=
 	)
 	plasma? (
-		app-crypt/qca-qt4:2[qt4]
+		app-crypt/qca-qt4
 		>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support?]
 	)
 	policykit? ( sys-auth/polkit-qt[qt4] )
 	spell? ( app-text/enchant:= )
 	ssl? (
-		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
 	)
 	udev? ( virtual/udev )
@@ -115,7 +114,6 @@ PDEPEND="
 	>=x11-libs/libXtst-1.1.0
 	x11-misc/xdg-utils
 	handbook? ( kde-apps/khelpcenter:* )
-	policykit? ( kde-plasma/polkit-kde-agent )
 "
 
 DOCS=( AUTHORS README{,-WIN32.TXT} TODO )
