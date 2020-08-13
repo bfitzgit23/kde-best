@@ -3,7 +3,7 @@
 
 EAPI=5
 inherit qt4-build-multilib
-MULTILIB_USEDEP_HACK='abi_x86_64(-)?'
+MULTILIB_USEDEP_HACK='abi_x86_64'
 
 DESCRIPTION="The WebKit module for the Qt toolkit"
 SRC_URI+=" https://files.adjust.com/qt-${PV}-wkhtmltopdf.patch"
@@ -22,9 +22,7 @@ DEPEND="
 	>=dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP_HACK}]
 	>=x11-libs/libX11-1.5.0-r1[${MULTILIB_USEDEP_HACK}]
 	>=x11-libs/libXrender-0.9.7-r1[${MULTILIB_USEDEP_HACK}]
-	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )
-"
-RDEPEND="${DEPEND}"
+	icu? ( dev-libs/icu:=[${MULTILIB_USEDEP_HACK}] )"
 
 PATCHES=(
 	"${FILESDIR}/4.8.2-javascriptcore-x32.patch"
