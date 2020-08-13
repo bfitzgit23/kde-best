@@ -3,12 +3,12 @@
 
 EAPI=5
 inherit qt4-build-multilib
-MULTILIB_USEDEP_HACK='abi_x86_64(-)?'
+MULTILIB_USEDEP_HACK='abi_x86_64(-)?,abi_x86_32'
 
 DESCRIPTION="The SVG module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 x86 i686"
 fi
 
 IUSE="+accessibility"
