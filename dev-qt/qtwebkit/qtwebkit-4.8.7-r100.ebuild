@@ -9,7 +9,7 @@ DESCRIPTION="The WebKit module for the Qt toolkit"
 SRC_URI+=" https://files.adjust.com/qt-${PV}-wkhtmltopdf.patch"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 x86"
 fi
 
 IUSE="icu +jit wkhtmltopdf ssl"

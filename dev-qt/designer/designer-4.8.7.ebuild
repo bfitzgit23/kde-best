@@ -10,7 +10,7 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-DESIGNER_PLUGINS="declarative phonon qt3support webkit"
+DESIGNER_PLUGINS="declarative phonon qt3support"
 IUSE="${DESIGNER_PLUGINS}"
 
 DEPEND="
@@ -19,7 +19,6 @@ DEPEND="
 	~dev-qt/qtscript-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
 	declarative? ( ~dev-qt/qtdeclarative-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 	qt3support? ( ~dev-qt/qt3support-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	webkit? ( >=dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 PDEPEND="phonon? ( media-libs/phonon[designer,qt4] )"
