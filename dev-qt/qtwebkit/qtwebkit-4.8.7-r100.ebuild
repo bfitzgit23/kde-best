@@ -3,7 +3,7 @@
 
 EAPI=5
 inherit qt4-build-multilib
-MULTILIB_USEDEP_HACK='abi_x86_64'
+MULTILIB_USEDEP_HACK='abi_x86_32'
 
 DESCRIPTION="The WebKit module for the Qt toolkit"
 SRC_URI+=" https://files.adjust.com/qt-${PV}-wkhtmltopdf.patch"
