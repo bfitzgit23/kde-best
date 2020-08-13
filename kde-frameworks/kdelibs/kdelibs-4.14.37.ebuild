@@ -135,6 +135,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.14.35-3dnow.patch"
 	"${FILESDIR}/${PN}-4.14.35-kde3support.patch"
 	"${FILESDIR}/${PN}-4.14.35-plasma4.patch"
+	"${FILESDIR}/kdelibs-openssl-1.1.patch"
 )
 
 src_prepare() {
@@ -169,7 +170,6 @@ src_configure() {
 		-DHAVE_X86_SSE2=$(usex cpu_flags_x86_sse2)
 		-DWITH_ACL=$(usex acl)
 		-DWITH_BZip2=$(usex bzip2)
-		-DWITH_FAM=$(usex fam)
 		-DWITH_Jasper=$(usex jpeg2k)
 		-DWITH_GSSAPI=$(usex kerberos)
 		-DWITH_LibLZMA=$(usex lzma)
@@ -185,6 +185,7 @@ src_configure() {
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
 		-DWITH_KDEWEBKIT=OFF
 		-DWITH_Avahi=$(usex zeroconf)
+                -DWITH_FAM=OFF
 	)
 
 	use zeroconf || mycmakeargs+=( -DWITH_DNSSD=OFF )
