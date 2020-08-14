@@ -72,7 +72,6 @@ RDEPEND="
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
 		kde-plasma/kdebase-cursors:4
-		kde-plasma/kephal:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
 		kde-plasma/klipper:4
