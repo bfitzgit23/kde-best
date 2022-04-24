@@ -52,7 +52,7 @@ fi
 # Defaults to 'always'.
 : ${CMAKE_REQUIRED:=always}
 if [[ ${CMAKE_REQUIRED} = always ]]; then
-	buildsystem_eclass="cmake-utils"
+	buildsystem_eclass="cmake"
 	export_fns="src_configure src_compile src_test src_install"
 fi
 
@@ -959,4 +959,3 @@ kde4-base_pkg_postrm() {
 }
 
 fi
-

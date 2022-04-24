@@ -6,7 +6,7 @@ EAPI=6
 KDE_DOC_DIRS="doc"
 KDE_HANDBOOK="optional"
 MY_P=${P/_beta/b}
-inherit kde4-base
+inherit kde4-base cmake-utils
 
 DESCRIPTION="A Latex Editor and TeX shell by KDE"
 HOMEPAGE="https://kile.sourceforge.io/"

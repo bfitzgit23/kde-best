@@ -12,7 +12,7 @@ KDE_HANDBOOK="optional"
 KDE_LINGUAS_LIVE_OVERRIDE="true"
 OPENGL_REQUIRED="optional"
 WEBKIT_REQUIRED="optional"
-inherit check-reqs kde4-base
+inherit check-reqs kde4-base cmake-utils
 
 DESCRIPTION="KDE Office Suite"
 HOMEPAGE="https://calligra.org/"
