@@ -1,0 +1,67 @@
+--- eclass/kde4-base.eclass
++++ eclass/kde4-base.eclass
+@@ -63,7 +63,7 @@ fi
+ # Defaults to 'always'.
+ : ${CMAKE_REQUIRED:=always}
+ if [[ ${CMAKE_REQUIRED} = always ]]; then
+-	buildsystem_eclass="cmake-utils"
++	buildsystem_eclass="cmake"
+ 	export_fns="src_configure src_compile src_test src_install"
+ fi
+ 
+@@ -759,8 +759,8 @@ kde4-base_src_prepare() {
+ 		esac
+ 	fi
+ 
+-	# Apply patches, cmake does the job already
+-	cmake-utils_src_prepare
++	# Apply patches, cmake-utils does the job already
++	cmake_src_prepare
+ 
+ 	# Save library dependencies
+ 	if [[ -n ${KMSAVELIBS} ]] ; then
+@@ -824,7 +824,7 @@ kde4-base_src_configure() {
+ 
+ 	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
+ 
+-	cmake-utils_src_configure
++	cmake_src_configure
+ }
+ 
+ # @FUNCTION: kde4-base_src_compile
+@@ -833,7 +833,7 @@ kde4-base_src_configure() {
+ kde4-base_src_compile() {
+ 	debug-print-function ${FUNCNAME} "$@"
+ 
+-	cmake-utils_src_compile "$@"
++	cmake_src_compile "$@"
+ }
+ 
+ # @FUNCTION: kde4-base_src_test
+@@ -851,7 +851,7 @@ kde4-base_src_test() {
+ 			kded4_pid=$!
+ 		fi
+ 
+-		cmake_src_test
++		cmake-utils_src_test
+ 	}
+ 
+ 	# When run as normal user during ebuild development with the ebuild command, the
+@@ -862,7 +862,7 @@ kde4-base_src_test() {
+ 
+ 	# Override this value, set in kde4-base_src_configure()
+ 	mycmakeargs+=(-DKDE4_BUILD_TESTS=ON)
+-	cmake-utils_src_configure
++	cmake_src_configure
+ 	kde4-base_src_compile
+ 
+ 	if [[ ${VIRTUALX_REQUIRED} == always || ${VIRTUALX_REQUIRED} == test ]]; then
+@@ -911,7 +911,7 @@ kde4-base_src_install() {
+ 		done
+ 	fi
+ 
+-	cmake-utils_src_install
++	cmake_src_install
+ 
+ 	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
+ 	# because then khelpcenter can't find the docs

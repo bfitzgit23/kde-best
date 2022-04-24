@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit cmake
+inherit cmake-utils
 
 DESCRIPTION="C++ bindings for GStreamer with a Qt-style API"
 HOMEPAGE="https://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
@@ -51,5 +51,5 @@ src_configure() {
 		-DQTGSTREAMER_TESTS=$(usex test)
 		-DQT_VERSION=4
 	)
-	cmake_src_configure
+	cmake-utils_src_configure
 }

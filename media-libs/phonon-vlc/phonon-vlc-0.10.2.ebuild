@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 MY_PN="phonon-backend-vlc"
-inherit cmake
+inherit cmake-utils
 
 DESCRIPTION="Phonon VLC backend"
 HOMEPAGE="https://community.kde.org/Phonon"
@@ -29,5 +29,5 @@ BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=( -DPHONON_BUILD_PHONON4QT5=OFF )
-	cmake_src_configure
+	cmake-utils_src_configure
 }
