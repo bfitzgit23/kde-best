@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 MY_PN=k4dirstat
-inherit xdg cmake
+inherit xdg cmake-utils
 
 DESCRIPTION="Graphically displays disk space used up by a directory tree"
 HOMEPAGE="https://github.com/jeromerobert/k4dirstat"
@@ -28,5 +28,5 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=( -DK4DIRSTAT_GIT_VERSION=OFF )
-	cmake_src_configure
+	cmake-utils_src_configure
 }
