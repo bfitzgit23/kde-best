@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,19 +7,20 @@ DECLARATIVE_REQUIRED="always"
 KDE_HANDBOOK="optional"
 KMNAME="kde-workspace"
 KMMODULE="plasma"
-PYTHON_COMPAT=( python2_7 )
 OPENGL_REQUIRED="always"
-WEBKIT_REQUIRED="never"
-inherit python-single-r1 kde4-meta
+WEBKIT_REQUIRED="always"
+inherit kde4-meta
 
 DESCRIPTION="Plasma: KDE desktop framework"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug gps json +pim python qalculate"
-
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+IUSE="debug gps json +pim qalculate"
 
 COMMONDEPEND="
+	dev-libs/libdbusmenu-qt[qt4(-)]
+	>=dev-qt/qtcore-4.8.4-r3:4
 	kde-frameworks/kactivities:4
 	kde-plasma/kephal:4
+	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmaclock:4[pim?]
 	kde-plasma/libplasmagenericshell:4
@@ -38,6 +39,7 @@ COMMONDEPEND="
 "
 DEPEND="${COMMONDEPEND}
 	dev-libs/boost
+	x11-base/xorg-proto
 "
 RDEPEND="${COMMONDEPEND}
 	$(add_kdeapps_dep plasma-runtime)
@@ -63,13 +65,6 @@ KMEXTRACTONLY="
 	ksysguard/
 "
 
-pkg_setup() {
-	if use python ; then
-		python-single-r1_pkg_setup
-	fi
-	kde4-meta_pkg_setup
-}
-
 src_unpack() {
 	if use handbook; then
 		KMEXTRA+=" doc/plasma-desktop"
@@ -81,23 +76,15 @@ src_unpack() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_NepomukCore=OFF
+		-DWITH_PythonLibrary=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_Xmms=OFF
 		$(cmake-utils_use_with gps libgps)
 		$(cmake-utils_use_with json QJSON)
 		$(cmake-utils_use_with pim Akonadi)
 		$(cmake-utils_use_with pim KdepimLibs)
-		$(cmake-utils_use_with python PythonLibrary)
 		$(cmake-utils_use_with qalculate)
 	)
 
 	kde4-meta_src_configure
-}
-
-src_install() {
-	kde4-meta_src_install
-
-	if use python; then
-		python_optimize "${ED}"
-	fi
 }

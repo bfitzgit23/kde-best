@@ -7,14 +7,14 @@ inherit qt4-build-multilib
 DESCRIPTION="Qt screen magnifier"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE=""
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[debug=,${MULTILIB_USEDEP}]
 	!<dev-qt/qthelp-4.8.5:4
 "
 RDEPEND="${DEPEND}"

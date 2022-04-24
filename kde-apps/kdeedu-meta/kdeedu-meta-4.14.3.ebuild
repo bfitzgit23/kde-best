@@ -1,12 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit kde4-meta-pkg
 
 DESCRIPTION="KDE educational apps - merge this to pull in all kdeedu-derived packages"
 HOMEPAGE="https://edu.kde.org"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
@@ -20,12 +21,11 @@ RDEPEND="
 	$(add_kdeapps_dep kbruch)
 	$(add_kdeapps_dep kgeography)
 	$(add_kdeapps_dep khangman)
-	$(add_kdeapps_dep kig)
 	$(add_kdeapps_dep kiten)
 	$(add_kdeapps_dep klettres)
 	$(add_kdeapps_dep kmplot)
 	$(add_kdeapps_dep kqtquickcharts)
-	$(add_kdeapps_dep kstars)
+	>=sci-astronomy/kstars-${PV}:${SLOT}
 	$(add_kdeapps_dep ktouch)
 	$(add_kdeapps_dep kturtle)
 	$(add_kdeapps_dep kwordquiz)
@@ -35,3 +35,4 @@ RDEPEND="
 	$(add_kdeapps_dep rocs)
 	$(add_kdeapps_dep step)
 "
+#	$(add_kdeapps_dep kig)

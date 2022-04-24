@@ -11,7 +11,7 @@ inherit kde4-base
 
 DESCRIPTION="X terminal kpart for use by konsole and other KDE applications"
 HOMEPAGE="https://www.kde.org/applications/system/konsole https://konsole.kde.org"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug minimal"
 
 COMMONDEPEND="
@@ -24,6 +24,7 @@ COMMONDEPEND="
 "
 DEPEND="${COMMONDEPEND}
 	x11-apps/bdftopcf
+	x11-base/xorg-proto
 "
 RDEPEND="${COMMONDEPEND}
 	!<kde-apps/konsole-4.14.3-r2

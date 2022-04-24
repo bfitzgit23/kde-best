@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 QT_MINIMAL="4.8.7"
-inherit cmake-utils toolchain-funcs flag-o-matic gnome2-utils toolchain-funcs xdg-utils
+inherit cmake-utils flag-o-matic toolchain-funcs xdg-utils
 
 DESCRIPTION="Libraries needed for programs by KDE"
 HOMEPAGE="https://www.kde.org/"
 SRC_URI="mirror://kde/stable/applications/17.08.2/src/${P}.tar.xz"
 
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 LICENSE="LGPL-2.1"
 SLOT="4/4.14"
-IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook jpeg2k kerberos
-libressl lzma cpu_flags_x86_mmx nls openexr plasma +policykit qt3support
-spell test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower zeroconf +opengl"
+IUSE="cpu_flags_x86_3dnow acl altivec +bzip2 debug doc fam +handbook kerberos
+libressl lzma cpu_flags_x86_mmx nls openexr opengl +plasma +policykit qt3support spell
+test cpu_flags_x86_sse cpu_flags_x86_sse2 ssl +udev +udisks +upower webkit zeroconf"
 
 REQUIRED_USE="
+	opengl? ( plasma )
 	udisks? ( udev )
 	upower? ( udev )
 "
@@ -30,7 +31,7 @@ COMMONDEPEND="
 	app-text/docbook-xsl-stylesheets
 	dev-lang/perl
 	>=dev-libs/libattica-0.4.2
-	dev-libs/libdbusmenu-qt[qt4]
+	dev-libs/libdbusmenu-qt[qt4(-)]
 	dev-libs/libpcre[unicode]
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -45,7 +46,8 @@ COMMONDEPEND="
 	media-libs/freetype:2
 	media-libs/giflib:=
 	media-libs/libpng:0=
-	media-libs/phonon[qt4]
+	media-libs/phonon:0-qt4
+	sys-libs/libutempter
 	sys-libs/zlib
 	virtual/jpeg:0
 	x11-libs/libICE
@@ -62,29 +64,27 @@ COMMONDEPEND="
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-misc/shared-mime-info
-	!kernel_SunOS? ( || (
-		sys-libs/libutempter
-		>=sys-freebsd/freebsd-lib-9.0
-	) )
 	acl? ( virtual/acl )
 	bzip2? ( app-arch/bzip2 )
 	fam? ( virtual/fam )
-	jpeg2k? ( media-libs/jasper:= )
 	kerberos? ( virtual/krb5 )
 	openexr? (
 		media-libs/openexr:=
 		media-libs/ilmbase:=
 	)
+	opengl? ( >=dev-qt/qtopengl-${QT_MINIMAL}:4 )
 	plasma? (
-		app-crypt/qca-qt4
+		app-crypt/qca:2-qt4
 		>=dev-qt/qtsql-${QT_MINIMAL}:4[qt3support?]
 	)
-	policykit? ( sys-auth/polkit-qt[qt4] )
+	policykit? ( sys-auth/polkit-qt:0-qt4 )
 	spell? ( app-text/enchant:= )
 	ssl? (
+		libressl? ( dev-libs/libressl:0= )
 		!libressl? ( dev-libs/openssl:0= )
 	)
 	udev? ( virtual/udev )
+	webkit? ( >=dev-qt/qtwebkit-${QT_MINIMAL}:4 )
 	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 "
 DEPEND="${COMMONDEPEND}
@@ -111,9 +111,11 @@ RDEPEND="${COMMONDEPEND}
 PDEPEND="
 	dev-util/automoc
 	virtual/pkgconfig
+	x11-base/xorg-proto
 	>=x11-libs/libXtst-1.1.0
 	x11-misc/xdg-utils
 	handbook? ( kde-apps/khelpcenter:* )
+	policykit? ( kde-plasma/polkit-kde-agent:* )
 "
 
 DOCS=( AUTHORS README{,-WIN32.TXT} TODO )
@@ -133,7 +135,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.14.35-3dnow.patch"
 	"${FILESDIR}/${PN}-4.14.35-kde3support.patch"
 	"${FILESDIR}/${PN}-4.14.35-plasma4.patch"
-	"${FILESDIR}/kdelibs-openssl-1.1.patch"
+	"${FILESDIR}/${PN}-4.14.37-exiv2-cmake.patch"
 )
 
 src_prepare() {
@@ -143,9 +145,11 @@ src_prepare() {
 	sed -e 's|FILES[[:space:]]applications.menu|FILES applications.menu RENAME kde-4-applications.menu|g' \
 		-i kded/CMakeLists.txt || die "Sed on CMakeLists.txt for applications.menu failed."
 
-	sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
-		plasma/CMakeLists.txt plasma/tests/CMakeLists.txt includes/CMakeLists.txt \
-		|| die "failed to sed out QT_QTOPENGL_FOUND"
+	if ! use opengl; then
+		sed -i -e "/if/ s/QT_QTOPENGL_FOUND/FALSE/" \
+			plasma/CMakeLists.txt plasma/tests/CMakeLists.txt includes/CMakeLists.txt \
+			|| die "failed to sed out QT_QTOPENGL_FOUND"
+	fi
 }
 
 src_configure() {
@@ -168,7 +172,8 @@ src_configure() {
 		-DHAVE_X86_SSE2=$(usex cpu_flags_x86_sse2)
 		-DWITH_ACL=$(usex acl)
 		-DWITH_BZip2=$(usex bzip2)
-		-DWITH_Jasper=$(usex jpeg2k)
+		-DWITH_FAM=$(usex fam)
+		-DWITH_Jasper=OFF
 		-DWITH_GSSAPI=$(usex kerberos)
 		-DWITH_LibLZMA=$(usex lzma)
 		-DWITH_Libintl=$(usex nls)
@@ -181,9 +186,8 @@ src_configure() {
 		-DWITH_OpenSSL=$(usex ssl)
 		-DWITH_UDev=$(usex udev)
 		-DWITH_SOLID_UDISKS2=$(usex udisks)
-		-DWITH_KDEWEBKIT=OFF
+		-DWITH_KDEWEBKIT=$(usex webkit)
 		-DWITH_Avahi=$(usex zeroconf)
-                -DWITH_FAM=OFF
 	)
 
 	use zeroconf || mycmakeargs+=( -DWITH_DNSSD=OFF )
@@ -247,10 +251,6 @@ src_install() {
 	echo "COLON_SEPARATED=QT_PLUGIN_PATH" > "${T}/77kde"
 	echo "QT_PLUGIN_PATH=${EPREFIX}/usr/$(get_libdir)/kde4/plugins" >> "${T}/77kde"
 	doenvd "${T}/77kde"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {

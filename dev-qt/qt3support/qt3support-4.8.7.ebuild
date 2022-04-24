@@ -7,17 +7,18 @@ inherit qt4-build-multilib
 DESCRIPTION="The Qt3Support module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE="+accessibility"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,qt3support,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[accessibility=,aqua=,debug=,qt3support,${MULTILIB_USEDEP}]
-	~dev-qt/qtsql-${PV}[aqua=,debug=,qt3support,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,qt3support,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[accessibility=,debug=,qt3support,${MULTILIB_USEDEP}]
+	~dev-qt/qtsql-${PV}[debug=,qt3support,${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
+PATCHES=( "${FILESDIR}/${PN}-4.8.7-gcc9.patch" )
 
 QT4_TARGET_DIRECTORIES="
 	src/qt3support

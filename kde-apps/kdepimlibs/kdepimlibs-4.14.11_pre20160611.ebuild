@@ -1,14 +1,15 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_HANDBOOK="optional"
 CPPUNIT_REQUIRED="optional"
+CMAKE_MAKEFILE_GENERATOR=emake
 inherit kde4-base
 
 DESCRIPTION="Common library for KDE PIM apps"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 LICENSE="LGPL-2.1"
 IUSE="debug ldap prison"
 
@@ -23,6 +24,7 @@ DEPEND="
 	dev-libs/libical:=
 	dev-libs/qjson
 	kde-apps/akonadi:4
+	media-libs/phonon:0-qt4
 	x11-misc/shared-mime-info
 	ldap? ( net-nds/openldap )
 	prison? ( kde-frameworks/prison:4 )
@@ -31,12 +33,14 @@ DEPEND="
 # bug #418071
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/fix-build-with-ical-3.0.diff" )
+
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TOOLS=OFF
 		-DBUILD_doc=$(usex handbook)
-		$(cmake-utils_use_find_package ldap Ldap)
-		$(cmake-utils_use_find_package prison Prison)
+		-DBUILD_ldap=$(usex ldap Ldap)
+		-DBUILD_prison=$(usex prison Prison)
 	)
 
 	kde4-base_src_configure

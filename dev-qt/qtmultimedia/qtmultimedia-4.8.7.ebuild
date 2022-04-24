@@ -7,14 +7,14 @@ inherit qt4-build-multilib
 DESCRIPTION="The Multimedia module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ~arm64 ~ia64 ppc ppc64 x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 fi
 
 IUSE="alsa"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[debug=,${MULTILIB_USEDEP}]
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"

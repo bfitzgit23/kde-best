@@ -7,15 +7,15 @@ inherit qt4-build-multilib
 DESCRIPTION="The network bearer plugins for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE="connman networkmanager"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	connman? ( ~dev-qt/qtdbus-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	networkmanager? ( ~dev-qt/qtdbus-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	connman? ( ~dev-qt/qtdbus-${PV}[debug=,${MULTILIB_USEDEP}] )
+	networkmanager? ( ~dev-qt/qtdbus-${PV}[debug=,${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}
 	connman? ( net-misc/connman )

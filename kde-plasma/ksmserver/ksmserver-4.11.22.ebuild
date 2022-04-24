@@ -1,19 +1,20 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 DECLARATIVE_REQUIRED="always"
 KMNAME="kde-workspace"
 inherit kde4-meta pax-utils
 
 DESCRIPTION="The reliable Plasma session manager that talks the standard X11R6"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
 	kde-plasma/kcminit:4
 	kde-plasma/libkworkspace:4
+	media-libs/qimageblitz
 	x11-libs/libICE
 	x11-libs/libSM
 	x11-libs/libX11

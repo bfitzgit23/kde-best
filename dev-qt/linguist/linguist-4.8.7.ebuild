@@ -7,15 +7,15 @@ inherit eutils qt4-build-multilib
 DESCRIPTION="Graphical tool for translating Qt applications"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE=""
 
 DEPEND="
-	~dev-qt/designer-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
+	~dev-qt/designer-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[debug=,${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,8 +8,8 @@ inherit kde4-meta
 
 DESCRIPTION="PowerDevil is an utility for KDE4 for Laptop Powermanagement"
 HOMEPAGE="https://solid.kde.org"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug +pm-utils"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+IUSE="debug"
 
 DEPEND="
 	kde-frameworks/kactivities:4
@@ -18,9 +18,7 @@ DEPEND="
 	x11-libs/libXext
 	x11-libs/libXrandr
 "
-RDEPEND="${DEPEND}
-	pm-utils? ( sys-power/pm-utils )
-"
+RDEPEND="${DEPEND}"
 
 KMEXTRACTONLY="
 	krunner/

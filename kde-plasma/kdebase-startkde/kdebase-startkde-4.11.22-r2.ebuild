@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ KMNOMODULE="true"
 inherit kde4-meta prefix
 
 DESCRIPTION="Script which starts a complete Plasma session, and associated scripts"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="crash-reporter +handbook minimal +wallpapers"
 
 # The KDE apps called from the startkde script.
@@ -59,24 +59,27 @@ RDEPEND="
 	kde-plasma/kwin:4
 	kde-plasma/plasma-workspace:4
 	kde-plasma/systemsettings:4
+	>=x11-apps/mkfontscale-1.2.0
 	x11-apps/xmessage
 	x11-apps/xprop
 	x11-apps/xrandr
 	x11-apps/xrdb
 	x11-apps/xsetroot
 	x11-apps/xset
-	crash-reporter? ( $(add_kdeapps_dep drkonqi ) )
+	crash-reporter? ( >=kde-plasma/drkonqi-${PV}:= )
 	handbook? ( kde-apps/khelpcenter:* )
 	!minimal? (
 		$(add_kdeapps_dep kdepasswd)
 		kde-plasma/freespacenotifier:4
 		kde-plasma/kcheckpass:4
 		kde-plasma/kdebase-cursors:4
+		kde-plasma/kephal:4
 		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
 		kde-plasma/klipper:4
 		kde-plasma/kmenuedit:4
 		kde-plasma/kstyles:4
+		kde-plasma/ksysguard:4
 		kde-plasma/ksystraycmd:4
 		kde-plasma/kwrited:4
 		kde-plasma/libkworkspace:4
@@ -88,7 +91,7 @@ RDEPEND="
 		kde-plasma/qguiplatformplugin_kde:4
 		kde-plasma/solid-actions-kcm:4
 	)
-	wallpapers? ( kde-apps/kde-wallpapers:4 )
+	wallpapers? ( kde-plasma/plasma-workspace-wallpapers:5 )
 "
 
 KMEXTRACTONLY="

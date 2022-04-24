@@ -13,7 +13,7 @@ inherit kde4-meta
 DESCRIPTION="System settings utility"
 HOMEPAGE+=" https://userbase.kde.org/System_Settings"
 IUSE="debug gtk +kscreen +usb"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 COMMONDEPEND="
 	dev-libs/glib:2
@@ -35,6 +35,7 @@ COMMONDEPEND="
 	usb? ( virtual/libusb:0 )
 "
 DEPEND="${COMMONDEPEND}
+	x11-base/xorg-proto
 "
 RDEPEND="${COMMONDEPEND}
 	>=kde-frameworks/oxygen-icons-5.19.0:5

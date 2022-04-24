@@ -10,12 +10,13 @@ inherit kde4-meta
 DESCRIPTION="KDE Plasma Command Runner"
 HOMEPAGE+=" https://userbase.kde.org/Plasma/Krunner"
 IUSE="debug"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
 	kde-plasma/kcheckpass:4
 	kde-plasma/kephal:4
 	kde-plasma/ksmserver:4
+	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmagenericshell:4
 	x11-libs/libX11
@@ -27,6 +28,7 @@ RDEPEND="${DEPEND}"
 KMEXTRACTONLY="
 	libs/kdm/
 	libs/kephal/
+	libs/ksysguard/
 	libs/kworkspace/
 	libs/plasmagenericshell/
 	kcheckpass/

@@ -8,12 +8,13 @@ KMMODULE="libs/taskmanager"
 inherit kde4-meta
 
 DESCRIPTION="A library that provides basic taskmanager functionality"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
 	kde-frameworks/kactivities:4
 	kde-plasma/kephal:4
+	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	x11-libs/libX11
 "

@@ -2,38 +2,37 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit qt4-build-multilib
 
 DESCRIPTION="Demonstration module and examples for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm ppc ppc64 x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 fi
 
 IUSE="dbus declarative multimedia opengl phonon webkit xmlpatterns"
 
 DEPEND="
-	~dev-qt/designer-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qthelp-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtscript-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtsql-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtsvg-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qttest-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	dbus? ( ~dev-qt/qtdbus-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	declarative? ( ~dev-qt/qtdeclarative-${PV}[aqua=,debug=,webkit?,${MULTILIB_USEDEP}] )
-	multimedia? ( ~dev-qt/qtmultimedia-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	opengl? ( ~dev-qt/qtopengl-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	phonon? ( >=media-libs/phonon-4.8.3-r1[qt4,${MULTILIB_USEDEP}] )
-	webkit? ( >=dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
-	xmlpatterns? ( ~dev-qt/qtxmlpatterns-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
+	~dev-qt/designer-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qthelp-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtscript-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtsql-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtsvg-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qttest-${PV}[debug=,${MULTILIB_USEDEP}]
+	dbus? ( ~dev-qt/qtdbus-${PV}[debug=,${MULTILIB_USEDEP}] )
+	declarative? ( ~dev-qt/qtdeclarative-${PV}[debug=,webkit?,${MULTILIB_USEDEP}] )
+	multimedia? ( ~dev-qt/qtmultimedia-${PV}[debug=,${MULTILIB_USEDEP}] )
+	opengl? ( ~dev-qt/qtopengl-${PV}[debug=,${MULTILIB_USEDEP}] )
+	phonon? ( media-libs/phonon:0-qt4[${MULTILIB_USEDEP}] )
+	webkit? ( >=dev-qt/qtwebkit-${PV}:4[debug=,${MULTILIB_USEDEP}] )
+	xmlpatterns? ( ~dev-qt/qtxmlpatterns-${PV}[debug=,${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-4.6-plugandpaint.patch"
-)
+PATCHES=( "${FILESDIR}/${PN}-4.6-plugandpaint.patch" )
 
 QT4_TARGET_DIRECTORIES="
 	demos

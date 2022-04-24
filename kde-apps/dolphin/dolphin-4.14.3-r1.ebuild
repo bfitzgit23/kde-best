@@ -9,13 +9,13 @@ inherit kde4-meta kde4-functions-extra
 
 DESCRIPTION="A KDE filemanager focusing on usability"
 HOMEPAGE="https://dolphin.kde.org https://www.kde.org/applications/system/dolphin"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug semantic-desktop thumbnail"
 
 DEPEND="
 	$(add_kdeframeworks_dep kactivities '' 4.13)
 	$(add_kdeapps_dep libkonq)
-	media-libs/phonon[vlc]
+	media-libs/phonon:0-qt4
 	x11-libs/libXrender
 	semantic-desktop? (
 		$(add_kdeframeworks_dep baloo)

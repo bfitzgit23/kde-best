@@ -12,17 +12,17 @@ SRC_URI+="
 	)"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE="compat doc"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtsql-${PV}[aqua=,debug=,sqlite,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtsql-${PV}[debug=,sqlite,${MULTILIB_USEDEP}]
 	compat? (
-		~dev-qt/qtdbus-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
+		~dev-qt/qtdbus-${PV}[debug=,${MULTILIB_USEDEP}]
 		>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	)
 "

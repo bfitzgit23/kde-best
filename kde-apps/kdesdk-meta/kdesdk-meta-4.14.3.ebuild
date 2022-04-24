@@ -1,12 +1,13 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit kde4-meta-pkg
 
 DESCRIPTION="KDE SDK - merge this to pull in all kdesdk-derived packages"
 HOMEPAGE="https://www.kde.org/applications/development"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="cvs"
 
 RDEPEND="
@@ -20,8 +21,8 @@ RDEPEND="
 	$(add_kdeapps_dep kdesdk-kioslaves)
 	$(add_kdeapps_dep kompare)
 	$(add_kdeapps_dep libkomparediff2)
-	$(add_kdeapps_dep lokalize)
-	$(add_kdeapps_dep okteta)
+	>=app-editors/okteta-${PV}:4
 	$(add_kdeapps_dep poxml)
 	$(add_kdeapps_dep umbrello)
 "
+#	$(add_kdeapps_dep lokalize)

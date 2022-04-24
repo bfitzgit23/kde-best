@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,10 +10,8 @@ DECLARATIVE_REQUIRED="always"
 inherit kde4-base
 
 if [[ ${KDE_BUILD_TYPE} != live ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-else
-	KEYWORDS=""
 fi
 
 DESCRIPTION="KDE Plasma applet for NetworkManager"
@@ -29,8 +27,8 @@ RDEPEND="
 	>=net-misc/networkmanager-0.9.8.0
 	modemmanager? ( >=net-libs/libmm-qt-1.0.0 )
 	openconnect? (
-		net-misc/networkmanager-openconnect
-		net-misc/openconnect:=
+		net-vpn/networkmanager-openconnect
+		net-vpn/openconnect:=
 	)
 	!kde-misc/networkmanagement
 "

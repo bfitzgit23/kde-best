@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,17 +7,17 @@ inherit eutils qt4-build-multilib
 DESCRIPTION="Tool for viewing on-line documentation in Qt help file format"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
+	KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE="webkit"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qthelp-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	>=dev-qt/qtsql-${PV}[aqua=,debug=,sqlite,${MULTILIB_USEDEP}]
-	webkit? ( ~dev-qt/qtwebkit-${PV}[aqua=,debug=,${MULTILIB_USEDEP}] )
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qthelp-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtsql-${PV}[debug=,sqlite,${MULTILIB_USEDEP}]
+	webkit? ( >=dev-qt/qtwebkit-${PV}:4[debug=,${MULTILIB_USEDEP}] )
 "
 RDEPEND="${DEPEND}"
 

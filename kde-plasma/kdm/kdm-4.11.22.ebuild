@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,13 +8,14 @@ KMNAME="kde-workspace"
 inherit systemd kde4-meta flag-o-matic user
 
 DESCRIPTION="Login manager by KDE, similar to xdm and gdm"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
-IUSE="debug +consolekit kerberos pam systemd"
 
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+IUSE="debug +consolekit kerberos pam systemd"
 REQUIRED_USE="consolekit? ( !systemd ) systemd? ( !consolekit )"
 
 DEPEND="
 	kde-plasma/libkworkspace:4
+	media-libs/qimageblitz
 	x11-libs/libX11
 	x11-libs/libXau
 	x11-libs/libXdmcp
@@ -24,6 +25,10 @@ DEPEND="
 		sys-auth/consolekit
 	)
 	kerberos? ( virtual/krb5 )
+	pam? (
+		kde-plasma/kcheckpass:4
+		sys-libs/pam
+	)
 	systemd? ( sys-apps/systemd )
 "
 RDEPEND="${DEPEND}
@@ -39,6 +44,7 @@ KMEXTRACTONLY="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4-gentoo-xinitrc.d.patch"
+	"${FILESDIR}/${PN}-4-dbus-build.patch"
 )
 
 pkg_setup() {

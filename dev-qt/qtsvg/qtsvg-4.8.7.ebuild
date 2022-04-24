@@ -7,14 +7,14 @@ inherit qt4-build-multilib
 DESCRIPTION="The SVG module for the Qt toolkit"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc x86"
 fi
 
 IUSE="+accessibility"
 
 DEPEND="
-	~dev-qt/qtcore-${PV}[aqua=,debug=,${MULTILIB_USEDEP}]
-	~dev-qt/qtgui-${PV}[accessibility=,aqua=,debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtcore-${PV}[debug=,${MULTILIB_USEDEP}]
+	~dev-qt/qtgui-${PV}[accessibility=,debug=,${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
@@ -26,6 +26,7 @@ QT4_TARGET_DIRECTORIES="
 
 QCONFIG_ADD="svg"
 QCONFIG_DEFINE="QT_SVG"
+PATCHES=( "${FILESDIR}/${PN}-4.8.7-gcc9.patch" )
 
 multilib_src_configure() {
 	local myconf=(

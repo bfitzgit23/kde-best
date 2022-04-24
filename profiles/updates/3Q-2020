@@ -1,0 +1,13 @@
+move kde-base/kapptemplate kde-apps/kapptemplate
+move kde-base/kbruch kde-apps/kbruch
+move app-cdr/k3b kde-apps/k3b
+move kde-misc/yakuake kde-apps/yakuake
+move dev-util/qgit dev-vcs/qgit
+move kde-misc/filelight kde-apps/filelight
+move kde-misc/knetworkmanager kde-misc/networkmanagement
+move kde-misc/kbiff mail-client/kbiff
+move kde-apps/okteta app-editors/okteta
+move kde-apps/kstars sci-astronomy/kstars
+move kde-apps/drkonqi kde-plasma/drkonqi
+move kde-apps/kjots app-text/kjots
+move kde-base/kscreensaver kde-plasma/kscreensaver

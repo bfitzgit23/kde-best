@@ -19,7 +19,7 @@ HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="4"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 x86"
 IUSE="+mysql postgres sqlite test"
 
 REQUIRED_USE="|| ( sqlite mysql postgres )"
@@ -29,6 +29,7 @@ CDEPEND="
 	>=dev-qt/qtcore-4.8.5:4
 	>=dev-qt/qtdbus-4.8.5:4
 	>=dev-qt/qtgui-4.8.5:4
+	>=dev-qt/qtsql-4.8.5:4[mysql?,postgres?]
 	>=dev-qt/qttest-4.8.5:4
 	x11-misc/shared-mime-info
 	sqlite? ( dev-db/sqlite:3 )

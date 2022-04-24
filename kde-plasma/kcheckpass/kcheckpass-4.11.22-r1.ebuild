@@ -7,10 +7,17 @@ KMNAME="kde-workspace"
 inherit kde4-meta
 
 DESCRIPTION="A simple password checker, used by any software in need of user authentication"
-KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug pam"
 
 DEPEND="
+	pam? ( sys-libs/pam )
+"
+RDEPEND="${DEPEND}
+	pam? ( || (
+		kde-plasma/kdebase-pam
+		kde-plasma/kscreenlocker:5
+	) )
 "
 
 src_prepare() {

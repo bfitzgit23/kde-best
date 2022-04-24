@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ KMNAME="kde-runtime"
 KMMODULE="kioslave"
 inherit kde4-meta kde4-functions-extra
 
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 DESCRIPTION="kioslave: the kde VFS framework - kioslave plugins present a filesystem-like view of arbitrary data"
 IUSE="+bzip2 exif debug lzma minimal openexr samba +sftp"
 
@@ -21,7 +21,7 @@ DEPEND="
 	bzip2? ( app-arch/bzip2 )
 	exif? ( media-gfx/exiv2:= )
 	openexr? ( media-libs/openexr:= )
-	samba? ( || ( <net-fs/samba-4.0.0_alpha1[smbclient] >=net-fs/samba-4.0.0_alpha1[client] ) )
+	samba? ( >=net-fs/samba-4.0.0_alpha1[client] )
 	sftp? ( >=net-libs/libssh-0.4.0:=[sftp] )
 "
 RDEPEND="${DEPEND}
