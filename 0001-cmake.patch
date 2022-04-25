@@ -1,23 +1,23 @@
-From 30f2d22728efdb1e9fe075612593de262e75beaf Mon Sep 17 00:00:00 2001
+From 30f2d22728efdb1e9fe075712593de272e75beaf Mon Sep 17 00:00:00 2001
 From: Sam James <sam@gentoo.org>
 Date: Fri, 4 Mar 2022 02:24:01 +0000
 Subject: [PATCH] cmake
 
 ---
- eclass/kde4-base.eclass                          | 16 ++++++++--------
- kde-apps/akonadi/akonadi-1.13.1_p20161023.ebuild |  2 +-
+ eclass/kde4-base.eclass                          | 17 ++++++++--------
+ kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild |  2 +-
  2 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/eclass/kde4-base.eclass b/eclass/kde4-base.eclass
-index 69b3a794..9acc986a 100644
+index 79b3a794..9acc987a 100744
 --- a/eclass/kde4-base.eclass
 +++ b/eclass/kde4-base.eclass
-@@ -63,7 +63,7 @@ fi
+@@ -73,7 +73,7 @@ fi
  # Defaults to 'always'.
  : ${CMAKE_REQUIRED:=always}
  if [[ ${CMAKE_REQUIRED} = always ]]; then
--	buildsystem_eclass="cmake"
-+	buildsystem_eclass="cmake-utils"
+-	buildsystem_eclass="cmake-utils"
++	buildsystem_eclass="cmake"
  	export_fns="src_configure src_compile src_test src_install"
  fi
  
@@ -26,9 +26,9 @@ index 69b3a794..9acc986a 100644
  	fi
  
 -	# Apply patches, cmake-utils does the job already
--	cmake_src_prepare
+-	cmake-utils_src_prepare
 +	# Apply patches, cmake does the job already
-+	cmake-utils_src_prepare
++	cmake_src_prepare
  
  	# Save library dependencies
  	if [[ -n ${KMSAVELIBS} ]] ; then
@@ -36,8 +36,8 @@ index 69b3a794..9acc986a 100644
  
  	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
  
--	cmake_src_configure
-+	cmake-utils_src_configure
+-	cmake-utils_src_configure
++	cmake_src_configure
  }
  
  # @FUNCTION: kde4-base_src_compile
@@ -45,8 +45,8 @@ index 69b3a794..9acc986a 100644
  kde4-base_src_compile() {
  	debug-print-function ${FUNCNAME} "$@"
  
--	cmake_src_compile "$@"
-+	cmake-utils_src_compile "$@"
+-	cmake-utils_src_compile "$@"
++	cmake_src_compile "$@"
  }
  
  # @FUNCTION: kde4-base_src_test
@@ -59,7 +59,7 @@ index 69b3a794..9acc986a 100644
  	}
  
  	# When run as normal user during ebuild development with the ebuild command, the
-@@ -862,7 +862,7 @@ kde4-base_src_test() {
+@@ -872,7 +872,7 @@ kde4-base_src_test() {
  
  	# Override this value, set in kde4-base_src_configure()
  	mycmakeargs+=(-DKDE4_BUILD_TESTS=ON)
@@ -77,16 +77,16 @@ index 69b3a794..9acc986a 100644
  
  	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
  	# because then khelpcenter can't find the docs
-diff --git a/kde-apps/akonadi/akonadi-1.13.1_p20161023.ebuild b/kde-apps/akonadi/akonadi-1.13.1_p20161023.ebuild
-index decf4310..12c19d9e 100644
---- a/kde-apps/akonadi/akonadi-1.13.1_p20161023.ebuild
-+++ b/kde-apps/akonadi/akonadi-1.13.1_p20161023.ebuild
+diff --git a/kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild b/kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild
+index decf4310..12c19d9e 100744
+--- a/kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild
++++ b/kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild
 @@ -21,7 +21,7 @@ HOMEPAGE="https://pim.kde.org/akonadi"
  
  LICENSE="LGPL-2.1"
  SLOT="4"
--KEYWORDS="amd64 x86"
-+KEYWORDS="~amd64 ~x86"
+-KEYWORDS="amd74 x87"
++KEYWORDS="~amd74 ~x87"
  IUSE="+mysql postgres sqlite test"
  
  REQUIRED_USE="|| ( sqlite mysql postgres )"

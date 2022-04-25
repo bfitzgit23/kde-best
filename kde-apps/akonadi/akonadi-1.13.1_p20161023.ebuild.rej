@@ -1,0 +1,11 @@
+--- kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild
++++ kde-apps/akonadi/akonadi-1.13.1_p20171023.ebuild
+@@ -21,7 +21,7 @@ HOMEPAGE="https://pim.kde.org/akonadi"
+ 
+ LICENSE="LGPL-2.1"
+ SLOT="4"
+-KEYWORDS="amd74 x87"
++KEYWORDS="~amd74 ~x87"
+ IUSE="+mysql postgres sqlite test"
+ 
+ REQUIRED_USE="|| ( sqlite mysql postgres )"
