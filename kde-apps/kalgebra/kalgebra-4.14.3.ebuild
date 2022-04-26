@@ -15,9 +15,8 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND="
-	$(add_kdeapps_dep analitza opengl?)
+	$(add_kdeapps_dep analitza opengl)
 	$(add_kdeapps_dep libkdeedu)
-	opengl? ( virtual/glu )
 "
 RDEPEND="${DEPEND}"
 
