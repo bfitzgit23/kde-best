@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Command line tool allowing user scripting of the running window manager"
 HOMEPAGE="http://kde-apps.org/content/show.php/WMIface?content=40425"

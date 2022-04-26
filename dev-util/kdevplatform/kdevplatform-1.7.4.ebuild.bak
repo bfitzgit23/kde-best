@@ -1,7 +1,7 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DECLARATIVE_REQUIRED="always"
 KMNAME="kdevelop"
@@ -45,7 +45,7 @@ src_configure() {
 		-DBUILD_classbrowser=$(usex classbrowser)
 		-DBUILD_cvs=$(usex cvs)
 		-DBUILD_konsole=$(usex konsole)
-		$(cmake-utils_use_find_package reviewboard QJSON)
+		$(cmake_use_find_package reviewboard QJSON)
 		-DBUILD_subversion=$(usex subversion)
 	)
 

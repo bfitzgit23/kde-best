@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils flag-o-matic gnome2-utils virtualx xdg-utils
+inherit cmake flag-o-matic gnome2-utils virtualx xdg-utils
 
 DESCRIPTION="Personal finance manager by KDE"
 HOMEPAGE="https://kmymoney.org/"
@@ -50,7 +50,7 @@ DEPEND="${COMMON_DEPEND}
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if [[ -v LINGUAS ]] ; then
 		pushd po > /dev/null || die
@@ -102,12 +102,12 @@ src_configure() {
 		-DENABLE_LIBOFX=$(usex ofx)
 		-DKDE4_BUILD_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile apidoc
+	cmake_src_compile
+	use doc && cmake_src_compile apidoc
 }
 
 src_test() {
@@ -118,7 +118,7 @@ src_test() {
 		kded4 2>&1 > /dev/null &
 		kded4_pid=$!
 
-		cmake-utils_src_test
+		cmake_src_test
 	}
 
 	unset DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
@@ -137,7 +137,7 @@ src_test() {
 
 src_install() {
 	use doc && HTML_DOCS=( "${BUILD_DIR}/apidocs/html/." )
-	cmake-utils_src_install
+	cmake_src_install
 
 	# We don't want /usr/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs

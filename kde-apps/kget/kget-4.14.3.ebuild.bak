@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 KDE_HANDBOOK="optional"
 inherit kde4-base kde4-functions-extra
@@ -29,10 +29,10 @@ src_configure() {
 		-DWITH_NepomukCore=OFF
 		-DWITH_NepomukWidgets=OFF
 		-DWITH_KWebKitPart=OFF
-		$(cmake-utils_use_with bittorrent KTorrent)
-		$(cmake-utils_use_with gpg QGpgme)
-		$(cmake-utils_use_with mms LibMms)
-		$(cmake-utils_use_with sqlite)
+		$(cmake_use_with bittorrent KTorrent)
+		$(cmake_use_with gpg QGpgme)
+		$(cmake_use_with mms LibMms)
+		$(cmake_use_with sqlite)
 	)
 	kde4-base_src_configure
 }

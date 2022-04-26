@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 KMNAME="konsole"
 KDE_HANDBOOK="never"
@@ -43,7 +43,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with "!minimal" LibKonq)
+		$(cmake_use_with "!minimal" LibKonq)
 	)
 
 	kde4-base_src_configure

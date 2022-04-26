@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 KDE_HANDBOOK="optional"
 inherit kde4-base
@@ -26,9 +26,9 @@ PATCHES=( "${FILESDIR}/${P}-crash.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with archive LibArchive)
-		$(cmake-utils_use_with bzip2 BZip2)
-		$(cmake-utils_use_with lzma LibLZMA)
+		$(cmake_use_with archive LibArchive)
+		$(cmake_use_with bzip2 BZip2)
+		$(cmake_use_with lzma LibLZMA)
 	)
 	kde4-base_src_configure
 }

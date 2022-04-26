@@ -32,7 +32,7 @@ KMEXTRA="
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with lm-sensors Sensors)
+		$(cmake_use_with lm-sensors Sensors)
 	)
 
 	kde4-meta_src_configure

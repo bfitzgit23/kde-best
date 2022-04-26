@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C++ template library for linear algebra"
 HOMEPAGE="http://eigen.tuxfamily.org/"
@@ -40,20 +40,20 @@ src_configure() {
 		-DEIGEN_BUILD_DEMOS=$(usex examples)
 		-DEIGEN_BUILD_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile -j1
+	cmake_src_compile -j1
 
 	if use doc; then
-		cmake-utils_src_compile -j1 doc
+		cmake_src_compile -j1 doc
 		HTML_DOCS=( "${BUILD_DIR}"/html/. )
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install -j1
+	cmake_src_install -j1
 
 	if use examples; then
 		cd "${BUILD_DIR}"/demos || die

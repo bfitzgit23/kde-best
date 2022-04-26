@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DECLARATIVE_REQUIRED="always"
 KMNAME="kde-workspace"
@@ -25,12 +25,12 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_has cpu_flags_x86_3dnow X86_3DNOW)
-		$(cmake-utils_use_has altivec PPC_ALTIVEC)
-		$(cmake-utils_use_has cpu_flags_x86_mmx X86_MMX)
-		$(cmake-utils_use_has cpu_flags_x86_sse X86_SSE)
-		$(cmake-utils_use_has cpu_flags_x86_sse2 X86_SSE2)
-		$(cmake-utils_use_with xinerama)
+		$(cmake_use_has cpu_flags_x86_3dnow X86_3DNOW)
+		$(cmake_use_has altivec PPC_ALTIVEC)
+		$(cmake_use_has cpu_flags_x86_mmx X86_MMX)
+		$(cmake_use_has cpu_flags_x86_sse X86_SSE)
+		$(cmake_use_has cpu_flags_x86_sse2 X86_SSE2)
+		$(cmake_use_with xinerama)
 	)
 
 	kde4-meta_src_configure

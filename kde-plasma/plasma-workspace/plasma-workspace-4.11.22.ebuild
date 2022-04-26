@@ -79,11 +79,11 @@ src_configure() {
 		-DWITH_PythonLibrary=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_Xmms=OFF
-		$(cmake-utils_use_with gps libgps)
-		$(cmake-utils_use_with json QJSON)
-		$(cmake-utils_use_with pim Akonadi)
-		$(cmake-utils_use_with pim KdepimLibs)
-		$(cmake-utils_use_with qalculate)
+		$(cmake_use_with gps libgps)
+		$(cmake_use_with json QJSON)
+		$(cmake_use_with pim Akonadi)
+		$(cmake_use_with pim KdepimLibs)
+		$(cmake_use_with qalculate)
 	)
 
 	kde4-meta_src_configure

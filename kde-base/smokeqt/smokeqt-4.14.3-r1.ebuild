@@ -40,16 +40,16 @@ src_configure() {
 	local mycmakeargs=(
 		-DDISABLE_Qt3Support=ON
 		-DWITH_QT3_SUPPORT=OFF
-		$(cmake-utils_use_disable declarative QtDeclarative)
-		$(cmake-utils_use_disable multimedia QtMultimedia)
-		$(cmake-utils_use_disable opengl QtOpenGL)
-		$(cmake-utils_use_with phonon)
-		$(cmake-utils_use_with qimageblitz QImageBlitz)
-		$(cmake-utils_use_with qscintilla QScintilla)
-		$(cmake-utils_use_disable qthelp QtHelp)
-		$(cmake-utils_use_with qwt Qwt5)
-		$(cmake-utils_use_disable webkit QtWebKit)
-		$(cmake-utils_use_disable xmlpatterns QtXmlPatterns)
+		$(cmake_use_disable declarative QtDeclarative)
+		$(cmake_use_disable multimedia QtMultimedia)
+		$(cmake_use_disable opengl QtOpenGL)
+		$(cmake_use_with phonon)
+		$(cmake_use_with qimageblitz QImageBlitz)
+		$(cmake_use_with qscintilla QScintilla)
+		$(cmake_use_disable qthelp QtHelp)
+		$(cmake_use_with qwt Qwt5)
+		$(cmake_use_disable webkit QtWebKit)
+		$(cmake_use_disable xmlpatterns QtXmlPatterns)
 	)
 	kde4-base_src_configure
 }

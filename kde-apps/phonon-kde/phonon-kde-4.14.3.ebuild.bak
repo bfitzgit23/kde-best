@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 KMNAME="kde-runtime"
 KMMODULE="phonon"
@@ -27,8 +27,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_tests=OFF
 		-DWITH_Xine=OFF
-		$(cmake-utils_use_with alsa)
-		$(cmake-utils_use_with pulseaudio PulseAudio)
+		$(cmake_use_with alsa)
+		$(cmake_use_with pulseaudio PulseAudio)
 	)
 
 	kde4-meta_src_configure

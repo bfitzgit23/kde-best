@@ -5,7 +5,7 @@ EAPI=7
 
 MY_P="${P#lib}"
 MY_PN="${PN#lib}"
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A library providing access to Open Collaboration Services"
 HOMEPAGE="https://www.kde.org/"
@@ -35,7 +35,7 @@ S=${WORKDIR}/${MY_P}
 src_configure() {
 	local mycmakeargs=(
 		-DQT4_BUILD=true
-		$(cmake-utils_use test ATTICA_ENABLE_TESTS)
+		$(cmake -Dtest=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

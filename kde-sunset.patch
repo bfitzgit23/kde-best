@@ -315,7 +315,7 @@ index 00000000..decf4310
 +else
 +	SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.bz2"
 +fi
-+inherit cmake-utils
++inherit cmake
 +
 +DESCRIPTION="The server part of Akonadi"
 +HOMEPAGE="https://pim.kde.org/akonadi"
@@ -402,12 +402,12 @@ index 00000000..decf4310
 +		-DQT5_BUILD=OFF
 +	)
 +
-+	cmake-utils_src_configure
++	cmake_src_configure
 +}
 +
 +src_test() {
 +	export $(dbus-launch)
-+	cmake-utils_src_test
++	cmake_src_test
 +}
 +
 +src_install() {
@@ -419,7 +419,7 @@ index 00000000..decf4310
 +	insinto /usr/share/config/akonadi
 +	doins "${T}"/akonadiserverrc
 +
-+	cmake-utils_src_install
++	cmake_src_install
 +}
 +
 +pkg_postinst() {

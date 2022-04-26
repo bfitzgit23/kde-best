@@ -28,8 +28,8 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with ieee1394 RAW1394)
-		$(cmake-utils_use_with opengl OpenGL)
+		$(cmake_use_with ieee1394 RAW1394)
+		$(cmake_use_with opengl OpenGL)
 	)
 
 	kde4-meta_src_configure

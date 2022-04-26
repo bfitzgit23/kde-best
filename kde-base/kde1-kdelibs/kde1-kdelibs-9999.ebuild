@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="KDE libraries, adapted to compile on modern systems (circa. 2016)"
 HOMEPAGE="https://invent.kde.org/historical/kde1-kdelibs"

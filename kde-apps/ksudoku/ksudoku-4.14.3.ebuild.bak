@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 KDE_HANDBOOK="optional"
 OPENGL_REQUIRED="optional"
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_with opengl OpenGL)
+		$(cmake_use_with opengl OpenGL)
 	)
 	kde4-base_src_configure
 }

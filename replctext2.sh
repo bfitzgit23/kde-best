@@ -1,6 +1,6 @@
 #!/bin/bash
 # **************** Change Variables Here ************
-startdirectory="/var/lib/layman/kde-sunset"
+startdirectory="/home/ben/kde-best"
 searchterm="cmake-utils"
 replaceterm="cmake"
 # **********************************************************

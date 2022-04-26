@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 KMNAME="kde-runtime"
 inherit kde4-meta
@@ -29,8 +29,8 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package gpg Gpgme)
-		$(cmake-utils_use_find_package gpg QGpgme)
+		$(cmake_use_find_package gpg Gpgme)
+		$(cmake_use_find_package gpg QGpgme)
 	)
 
 	kde4-base_src_configure

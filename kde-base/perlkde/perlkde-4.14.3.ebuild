@@ -27,11 +27,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_Nepomuk=OFF
 		-DWITH_Soprano=OFF
-		$(cmake-utils_use_with akonadi)
-		$(cmake-utils_use_with akonadi KdepimLibs)
-		$(cmake-utils_use_with attica LibAttica)
-		$(cmake-utils_use_disable kate)
-		$(cmake-utils_use_with okular)
+		$(cmake_use_with akonadi)
+		$(cmake_use_with akonadi KdepimLibs)
+		$(cmake_use_with attica LibAttica)
+		$(cmake_use_disable kate)
+		$(cmake_use_with okular)
 	)
 	kde4-base_src_configure
 }

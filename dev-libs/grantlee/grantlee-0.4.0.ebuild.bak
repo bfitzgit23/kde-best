@@ -1,9 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C++ string template engine based on the Django template system"
 HOMEPAGE="https://github.com/steveire/grantlee"
@@ -34,20 +34,20 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_build test TESTS)
+		$(cmake_use_build test TESTS)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
-	use doc && cmake-utils_src_compile docs
+	use doc && cmake_src_compile docs
 }
 
 src_install() {
 	use doc && HTML_DOCS=( "${BUILD_DIR}/apidox/" )
 
-	cmake-utils_src_install
+	cmake_src_install
 }

@@ -16,7 +16,7 @@ index 69b3a794..9acc986a 100644
  # Defaults to 'always'.
  : ${CMAKE_REQUIRED:=always}
  if [[ ${CMAKE_REQUIRED} = always ]]; then
--	buildsystem_eclass="cmake-utils"
+-	buildsystem_eclass="cmake"
 +	buildsystem_eclass="cmake"
  	export_fns="src_configure src_compile src_test src_install"
  fi
@@ -25,8 +25,8 @@ index 69b3a794..9acc986a 100644
  		esac
  	fi
  
--	# Apply patches, cmake-utils does the job already
--	cmake-utils_src_prepare
+-	# Apply patches, cmake does the job already
+-	cmake_src_prepare
 +	# Apply patches, cmake does the job already
 +	cmake_src_prepare
  
@@ -36,7 +36,7 @@ index 69b3a794..9acc986a 100644
  
  	mycmakeargs=("${cmakeargs[@]}" "${mycmakeargs[@]}")
  
--	cmake-utils_src_configure
+-	cmake_src_configure
 +	cmake_src_configure
  }
  
@@ -45,7 +45,7 @@ index 69b3a794..9acc986a 100644
  kde4-base_src_compile() {
  	debug-print-function ${FUNCNAME} "$@"
  
--	cmake-utils_src_compile "$@"
+-	cmake_src_compile "$@"
 +	cmake_src_compile "$@"
  }
  
@@ -54,7 +54,7 @@ index 69b3a794..9acc986a 100644
  			kded4_pid=$!
  		fi
  
--		cmake-utils_src_test
+-		cmake_src_test
 +		cmake_src_test
  	}
  
@@ -63,7 +63,7 @@ index 69b3a794..9acc986a 100644
  
  	# Override this value, set in kde4-base_src_configure()
  	mycmakeargs+=(-DKDE4_BUILD_TESTS=ON)
--	cmake-utils_src_configure
+-	cmake_src_configure
 +	cmake_src_configure
  	kde4-base_src_compile
  
@@ -72,7 +72,7 @@ index 69b3a794..9acc986a 100644
  		done
  	fi
  
--	cmake-utils_src_install
+-	cmake_src_install
 +	cmake_src_install
  
  	# We don't want ${PREFIX}/share/doc/HTML to be compressed,

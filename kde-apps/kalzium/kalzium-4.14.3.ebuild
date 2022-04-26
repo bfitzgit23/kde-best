@@ -34,8 +34,8 @@ src_configure(){
 		-DWITH_Avogadro=OFF
 		-DWITH_OpenBabel2=OFF
 		-DWITH_OpenGL=OFF
-		$(cmake-utils_use_with solver OCaml)
-		$(cmake-utils_use_with solver Libfacile)
+		$(cmake_use_with solver OCaml)
+		$(cmake_use_with solver Libfacile)
 	)
 
 	kde4-base_src_configure

@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="Qt4/C++ wrapper for ALSA sequencer"
 HOMEPAGE="https://drumstick.sourceforge.io/"
@@ -36,7 +36,7 @@ PATCHES=(
 
 src_prepare() {
 	sed -e '/CMAKE_EXE_LINKER_FLAGS/d' -i CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -44,5 +44,5 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_DOC=$(usex doc)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

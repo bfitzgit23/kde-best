@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = *_pre* || ${PV} = *_p* ]]; then
 	# KDE quickgit https certificate issue
@@ -14,7 +14,7 @@ if [[ ${PV} = *_pre* || ${PV} = *_p* ]]; then
 else
 	SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.bz2"
 fi
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The server part of Akonadi"
 HOMEPAGE="https://pim.kde.org/akonadi"
@@ -101,12 +101,12 @@ src_configure() {
 		-DQT5_BUILD=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	export $(dbus-launch)
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
@@ -118,7 +118,7 @@ EOF
 	insinto /usr/share/config/akonadi
 	doins "${T}"/akonadiserverrc
 
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {
