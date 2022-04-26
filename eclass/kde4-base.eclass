@@ -24,15 +24,6 @@ _KDE4_BASE_ECLASS=1
 case ${EAPI} in
 	6) inherit eapi7-ver ;;
 	7) : ;;
-esac
-
-
-# @ECLASS-VARIABLE: EAPI
-# @DESCRIPTION:
-# Currently kde4 eclasses support 6 and 7.
-case ${EAPI} in
-	6) inherit eapi7-ver ;;
-	7) : ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
 esac
 
@@ -47,7 +38,14 @@ esac
 # @DESCRIPTION:
 # If defined, launch and use a private dbus session during src_test.
 
-inherit kde4-functions toolchain-funcs flag-o-matic gnome2-utils eutils multilib xdg-utils
+# @ECLASS-VARIABLE: VIRTUALX_REQUIRED
+# @DESCRIPTION:
+# For proper description see virtualx.eclass manpage.
+# Here we redefine default value to be manual, if your package needs virtualx
+# for tests you should proceed with setting VIRTUALX_REQUIRED=test.
+: ${VIRTUALX_REQUIRED:=manual}
+
+inherit kde4-functions toolchain-funcs flag-o-matic gnome2-utils virtualx eutils multilib xdg-utils
 
 
 if [[ ${KDE_BUILD_TYPE} = live ]]; then
@@ -864,7 +862,7 @@ kde4-base_src_test() {
 
 	# Override this value, set in kde4-base_src_configure()
 	mycmakeargs+=(-DKDE4_BUILD_TESTS=ON)
-	cmake-utils_src_configure
+	cmake_src_configure
 	kde4-base_src_compile
 
 	if [[ ${VIRTUALX_REQUIRED} == always || ${VIRTUALX_REQUIRED} == test ]]; then
@@ -913,7 +911,7 @@ kde4-base_src_install() {
 		done
 	fi
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	# We don't want ${PREFIX}/share/doc/HTML to be compressed,
 	# because then khelpcenter can't find the docs
@@ -972,4 +970,3 @@ kde4-base_pkg_postrm() {
 }
 
 fi
-

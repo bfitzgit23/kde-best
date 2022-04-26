@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PN=k4dirstat
-inherit xdg cmake-utils
+inherit xdg cmake
 
 DESCRIPTION="Graphically displays disk space used up by a directory tree"
 HOMEPAGE="https://github.com/jeromerobert/k4dirstat"
@@ -28,5 +28,5 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=( -DK4DIRSTAT_GIT_VERSION=OFF )
-	cmake-utils_src_configure
+	cmake_src_configure
 }

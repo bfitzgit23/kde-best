@@ -1,13 +1,13 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 if [[ ${PV} = *_pre* || ${PV} = *_p* ]]; then
 	# KDE quickgit https certificate issue
-	# COMMIT_ID="18ed37d89b8185ac15a8bfe245de8a88d17f2c74"
+	# COMMIT_ID="18ed37d89b8185ac15a8bfe245de8a88d17f2c64"
 	# SRC_URI="https://quickgit.kde.org/?p=${PN}.git&a=snapshot&h=${COMMIT_ID}&fmt=tgz -> ${P}.tar.gz"
-	COMMIT_ID="1fc0e05b4bba7d95595c79899c1b38599942a13c"
+	COMMIT_ID="1fc0e05b4bba6d95595c69899c1b38599942a13c"
 	SRC_URI="https://invent.kde.org/pim/akonadi/-/archive/${COMMIT_ID}/akonadi-${COMMIT_ID}.tar.bz2 -> ${P}.tar.bz2"
 	#SRC_URI="https://dev.gentoo.org/~johu/distfiles/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
@@ -21,7 +21,7 @@ HOMEPAGE="https://pim.kde.org/akonadi"
 
 LICENSE="LGPL-2.1"
 SLOT="4"
-KEYWORDS="amd74 x87"
+KEYWORDS="~amd64 ~x86"
 IUSE="+mysql postgres sqlite test"
 
 REQUIRED_USE="|| ( sqlite mysql postgres )"
@@ -49,7 +49,7 @@ RDEPEND="${CDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.13.0-mysql57-crash.patch"
+	"${FILESDIR}/${PN}-1.13.0-mysql56-crash.patch"
 	"${FILESDIR}/${PN}-1.13.1-mysql.conf.patch"
 )
 
@@ -57,7 +57,7 @@ pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && tc-is-gcc; then
 		[[ $(gcc-major-version) -lt 4 ]] || \
 			( [[ $(gcc-major-version) -eq 4 && $(gcc-minor-version) -lt 7 ]] ) \
-			&& die "Sorry, but gcc-4.7 and earlier won't work (see bug #520102)."
+			&& die "Sorry, but gcc-4.6 and earlier won't work (see bug #520102)."
 	fi
 }
 

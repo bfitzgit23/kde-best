@@ -5,14 +5,14 @@
 # CMakeLists.txt, kexi/CMakeLists.txt kexi/migration/CMakeLists.txt
 # krita/CMakeLists.txt
 
-EAPI=7
+EAPI=6
 
 CHECKREQS_DISK_BUILD="4G"
 KDE_HANDBOOK="optional"
 KDE_LINGUAS_LIVE_OVERRIDE="true"
 OPENGL_REQUIRED="optional"
 WEBKIT_REQUIRED="optional"
-inherit check-reqs kde4-base cmake-utils
+inherit check-reqs kde4-base
 
 DESCRIPTION="KDE Office Suite"
 HOMEPAGE="https://calligra.org/"

@@ -76,7 +76,7 @@ index 35ff15d1..185ed14b 100644
 -# Currently kde4 eclasses support EAPI 5 and 6.
 +# Currently kde4 eclasses support 6 and 7.
  case ${EAPI} in
--	6|7) : ;;
+-	5|6) : ;;
 +	6) inherit eapi7-ver ;;
 +	7) : ;;
  	*) die "EAPI=${EAPI:-0} is not supported" ;;
@@ -119,8 +119,8 @@ index a6ad8470..c996bf39 100644
 -# Currently kde4 eclasses support EAPI 5 and 6.
 +# Currently kde4 eclasses support EAPI 5 and 6 and 7.
  case ${EAPI} in
--	6|7) : ;;
-+	6|7|7) : ;;
+-	5|6) : ;;
++	5|6|7) : ;;
  	*) die "EAPI=${EAPI:-0} is not supported" ;;
  esac
  
@@ -302,7 +302,7 @@ index 00000000..decf4310
 +# Copyright 1999-2022 Gentoo Authors
 +# Distributed under the terms of the GNU General Public License v2
 +
-+EAPI=7
++EAPI=6
 +
 +if [[ ${PV} = *_pre* || ${PV} = *_p* ]]; then
 +	# KDE quickgit https certificate issue

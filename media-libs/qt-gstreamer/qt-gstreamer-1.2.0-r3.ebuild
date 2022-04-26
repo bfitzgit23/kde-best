@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C++ bindings for GStreamer with a Qt-style API"
 HOMEPAGE="https://gstreamer.freedesktop.org/modules/qt-gstreamer.html"
@@ -51,5 +51,5 @@ src_configure() {
 		-DQTGSTREAMER_TESTS=$(usex test)
 		-DQT_VERSION=4
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
