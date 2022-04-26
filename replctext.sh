@@ -1,7 +1,7 @@
 #!/bin/bash
 # **************** Change Variables Here ************
 startdirectory="/var/lib/layman/kde-sunset"
-searchterm="EAPI=7"
+searchterm="EAPI=5"
 replaceterm="EAPI=7"
 # **********************************************************
 
