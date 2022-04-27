@@ -35,7 +35,7 @@ S=${WORKDIR}/${MY_P}
 src_configure() {
 	local mycmakeargs=(
 		-DQT4_BUILD=true
-		$(cmake -Dtest=$(usex test))
+		$(usex -Dtest=$(usex test))
 	)
 	cmake_src_configure
 }
