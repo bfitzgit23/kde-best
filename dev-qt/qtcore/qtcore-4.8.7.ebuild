@@ -13,7 +13,7 @@ if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-IUSE="+glib iconv icu libressl qt3support ssl aqua"
+IUSE="+glib iconv libressl qt3support ssl aqua"
 
 DEPEND="
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
@@ -93,7 +93,6 @@ multilib_src_configure() {
 		-no-xrandr -no-xrender -no-mitshm -no-fontconfig -no-freetype -no-xinput -no-xkb
 		$(qt_use glib)
 		$(qt_use iconv)
-		$(qt_use icu)
 		$(use ssl && echo -openssl-linked || echo -no-openssl)
 		$(qt_use qt3support)
 	)
