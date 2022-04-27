@@ -6,7 +6,7 @@ MY_PV='4.8.7'
 QT4_DEBIAN_PATCHES_COMMIT='df517fcfe4ee9430cff23a180be42ae5ebe867d5'
 inherit qt4-build-multilib
 
-DESCRIPTION="The XmlPatterns module for the Qt toolkit"
+DESCRIPTION="The DBus module for the Qt toolkit"
 SRC_URI="https://ftp.desolve.ru/ftp/viktor/qt4/qt-everywhere-opensource-src-4.8.7.tar.gz"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
@@ -16,21 +16,27 @@ fi
 IUSE="aqua"
 
 DEPEND="
-	>=dev-qt/qtcore-4.8.2020.02[aqua=,debug=,${MULTILIB_USEDEP}]
+	>=dev-qt/qtcore-4.8.7[aqua=,debug=,${MULTILIB_USEDEP}]
+	sys-apps/dbus[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
-QT4_TARGET_DIRECTORIES="
-	src/xmlpatterns
-	tools/xmlpatterns
-	tools/xmlpatternsvalidator"
+PATCHES=(
+	"${FILESDIR}/${PN}-4.8.4-qdbusconnection-silence-warning.patch"
+)
 
-QCONFIG_ADD="xmlpatterns"
-QCONFIG_DEFINE="QT_XMLPATTERNS"
+QT4_TARGET_DIRECTORIES="
+	src/dbus
+	tools/qdbus/qdbus
+	tools/qdbus/qdbusxml2cpp
+	tools/qdbus/qdbuscpp2xml"
+
+QCONFIG_ADD="dbus dbus-linked"
+QCONFIG_DEFINE="QT_DBUS"
 
 multilib_src_configure() {
 	local myconf=(
-		-xmlpatterns
+		-dbus-linked
 	)
 	qt4_multilib_src_configure
 }

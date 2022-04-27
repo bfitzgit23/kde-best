@@ -16,7 +16,7 @@ fi
 IUSE="+jit aqua"
 
 DEPEND="
-	>=dev-qt/qtcore-4.8.2020.02[aqua=,debug=,${MULTILIB_USEDEP}]
+	>=dev-qt/qtcore-4.8.7[aqua=,debug=,${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 

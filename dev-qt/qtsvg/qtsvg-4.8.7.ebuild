@@ -6,30 +6,40 @@ MY_PV='4.8.7'
 QT4_DEBIAN_PATCHES_COMMIT='df517fcfe4ee9430cff23a180be42ae5ebe867d5'
 inherit qt4-build-multilib
 
-DESCRIPTION="The QtTest module for unit testing Qt applications and libraries"
+DESCRIPTION="The SVG module for the Qt toolkit"
 SRC_URI="https://ftp.desolve.ru/ftp/viktor/qt4/qt-everywhere-opensource-src-4.8.7.tar.gz"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-IUSE="aqua"
+IUSE="+accessibility aqua"
 
 DEPEND="
-	>=dev-qt/qtcore-4.8.2020.02[aqua=,debug=,${MULTILIB_USEDEP}]
+	>=dev-qt/qtcore-4.8.7[aqua=,debug=,${MULTILIB_USEDEP}]
+	>=dev-qt/qtgui-${MY_PV}[accessibility=,aqua=,debug=,${MULTILIB_USEDEP}]
+	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}"
 
-QT4_TARGET_DIRECTORIES="src/testlib"
+QT4_TARGET_DIRECTORIES="
+	src/svg
+	src/plugins/imageformats/svg
+	src/plugins/iconengines/svgiconengine"
+
+QCONFIG_ADD="svg"
+QCONFIG_DEFINE="QT_SVG"
 
 multilib_src_configure() {
 	local myconf=(
-		-no-xkb -no-fontconfig -no-xrender -no-xrandr -no-xfixes -no-xcursor
-		-no-xinerama -no-xshape -no-sm -no-opengl
-		-no-nas-sound -no-dbus -no-cups -no-nis -no-gif -no-libpng
+		-svg
+		$(qt_use accessibility)
+		-no-xkb  -no-xrender
+		-no-xrandr -no-xfixes -no-xcursor -no-xinerama -no-xshape -no-sm
+		-no-opengl -no-nas-sound -no-dbus -no-cups -no-nis -no-gif -no-libpng
 		-no-libmng -no-libjpeg -no-openssl -system-zlib -no-webkit -no-phonon
 		-no-qt3support -no-xmlpatterns -no-freetype -no-libtiff
-		-no-accessibility -no-fontconfig -no-glib -no-svg
+		-no-fontconfig -no-glib -no-gtkstyle
 	)
 	qt4_multilib_src_configure
 }
