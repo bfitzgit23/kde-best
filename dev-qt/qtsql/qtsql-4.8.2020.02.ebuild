@@ -7,12 +7,13 @@ QT4_DEBIAN_PATCHES_COMMIT='df517fcfe4ee9430cff23a180be42ae5ebe867d5'
 inherit multilib qt4-build-multilib
 
 DESCRIPTION="The SQL module for the Qt toolkit"
+SRC_URI="https://ftp.desolve.ru/ftp/viktor/qt4/qt-everywhere-opensource-src-4.8.7.tar.gz"
 
 if [[ ${QT4_BUILD_TYPE} == release ]]; then
 	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
 fi
 
-IUSE="freetds mysql oci8 odbc postgres qt3support +sqlite"
+IUSE="freetds mysql oci8 odbc postgres qt3support +sqlite aqua"
 
 REQUIRED_USE="
 	|| ( freetds mysql oci8 odbc postgres sqlite )
