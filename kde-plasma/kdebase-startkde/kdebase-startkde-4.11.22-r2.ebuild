@@ -74,19 +74,15 @@ RDEPEND="
 		kde-plasma/kcheckpass:4
 		kde-plasma/kdebase-cursors:4
 		kde-plasma/kephal:4
-		kde-plasma/khotkeys:4
 		kde-plasma/kinfocenter:4
 		kde-plasma/klipper:4
-		kde-plasma/kmenuedit:4
 		kde-plasma/kstyles:4
-		kde-plasma/ksysguard:4
 		kde-plasma/ksystraycmd:4
 		kde-plasma/kwrited:4
 		kde-plasma/libkworkspace:4
 		kde-plasma/liboxygenstyle:4
 		kde-plasma/libplasmaclock:4
 		kde-plasma/libplasmagenericshell:4
-		kde-plasma/libtaskmanager:4
 		kde-plasma/powerdevil:4
 		kde-plasma/qguiplatformplugin_kde:4
 		kde-plasma/solid-actions-kcm:4
@@ -100,11 +96,6 @@ KMEXTRACTONLY="
 	startkde.cmake
 "
 
-PATCHES=(
-	"${FILESDIR}/gentoo-startkde4-4.patch"
-	"${FILESDIR}/${PN}-kscreen.patch"
-	"${FILESDIR}/${PN}-kwalletd-pam.patch"
-)
 
 src_prepare() {
 	kde4-meta_src_prepare

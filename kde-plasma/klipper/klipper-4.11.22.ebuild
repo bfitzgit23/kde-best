@@ -14,7 +14,6 @@ IUSE="debug prison"
 
 DEPEND="
 	kde-plasma/libkworkspace:4
-	kde-plasma/libtaskmanager:4
 	sys-libs/zlib
 	x11-libs/libX11
 	prison? ( kde-frameworks/prison:4 )

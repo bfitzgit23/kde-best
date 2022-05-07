@@ -15,13 +15,11 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="debug"
 
 DEPEND=""
-RDEPEND="$(add_kdeapps_dep konsolepart)"
 
 # can't connect to a kded instance, fails to connect to dbus
 RESTRICT="test"
 
 src_prepare() {
-	comment_add_subdirectory data
 
 	kde4-base_src_prepare
 }
@@ -37,8 +35,4 @@ src_configure() {
 src_install() {
 	kde4-base_src_install
 
-	rm -r "${ED}"usr/$(get_libdir) || die
-	rm -r "${ED}"usr/share/apps || die
-	rm "${ED}"usr/share/kde4/services/konsolepart.desktop || die
-	rm -r "${ED}"usr/share/kde4/servicetypes || die
 }

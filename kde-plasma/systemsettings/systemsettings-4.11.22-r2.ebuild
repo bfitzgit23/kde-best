@@ -12,7 +12,7 @@ inherit kde4-meta
 
 DESCRIPTION="System settings utility"
 HOMEPAGE+=" https://userbase.kde.org/System_Settings"
-IUSE="debug gtk +kscreen +usb"
+IUSE="debug +kscreen +usb"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 COMMONDEPEND="
@@ -42,7 +42,6 @@ RDEPEND="${COMMONDEPEND}
 	sys-libs/timezone-data
 	x11-apps/setxkbmap
 	x11-misc/xkeyboard-config
-	gtk? ( kde-plasma/kde-gtk-config:4 )
 	kscreen? ( kde-plasma/kscreen:4 )
 "
 

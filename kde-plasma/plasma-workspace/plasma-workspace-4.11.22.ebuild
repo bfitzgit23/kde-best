@@ -23,7 +23,6 @@ COMMONDEPEND="
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmaclock:4[pim?]
 	kde-plasma/libplasmagenericshell:4
-	kde-plasma/libtaskmanager:4
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -45,17 +44,13 @@ RDEPEND="${COMMONDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}/kde-workspace-strigi.patch"
-	"${FILESDIR}/kde-workspace-4.8.0-bug796969.patch"
-	"${FILESDIR}/dbus-environment-update.patch"
-        "${FILESDIR}/etc-update.patch"
-	"${FILESDIR}/terminate-server.patch"
+	"${FILESDIR}/dbus-update-environment.patch"
+	"${FILESDIR}/kde-workspace-4.11.7-weather-fix-bbcukmet.patch"
 )
 
 KMEXTRA="
 	appmenu/
 	ktouchpadenabler/
-	statusnotifierwatcher/
 "
 KMEXTRACTONLY="
 	kcheckpass/
@@ -69,7 +64,9 @@ KMEXTRACTONLY="
 	libs/plasmagenericshell/
 	libs/ksysguard/
 	libs/kdm/kgreeterplugin.h
-	ksysguard/"
+	ksysguard/
+	plasma/generic/dataengines/statusnotifieritem
+	plasma/generic/dataengines/weather/"
 
 
 src_unpack() {
@@ -86,12 +83,15 @@ src_configure() {
 		-DWITH_PythonLibrary=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_Xmms=OFF
+		-DWITH_libgps=OFF
+		-DWITH_CkConnector=OFF
+		-DKDE4_BUILD_TESTS=OFF
+        -DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_CXX_FLAGS="-fpermissive"
-		$(cmake_use_with gps libgps)
-		$(cmake_use_with json QJSON)
-		$(cmake_use_with pim Akonadi)
-		$(cmake_use_with pim KdepimLibs)
-		$(cmake_use_with qalculate)
+		-Dgps=$(usex gps libgps)
+		-Djson=$(usex json QJSON)
+		-Dpim=$(usex pim KdepimLibs)
+		-Dqalculate=$(usex qalculate)
 	)
 
 	kde4-meta_src_configure

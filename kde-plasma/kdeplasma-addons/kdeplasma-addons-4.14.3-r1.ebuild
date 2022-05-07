@@ -9,7 +9,7 @@ inherit flag-o-matic kde4-base
 DESCRIPTION="Extra Plasma applets and engines"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="attica debug desktopglobe eigen exif ibus json +pim qalculate qwt scim"
+IUSE="attica debug desktopglobe eigen ibus json +pim qalculate qwt scim"
 
 RESTRICT=test
 # tests hang
@@ -22,7 +22,6 @@ COMMON_DEPEND="
 	x11-misc/shared-mime-info
 	attica? ( dev-libs/libattica )
 	desktopglobe? ( $(add_kdeapps_dep marble) )
-	exif? ( $(add_kdeapps_dep libkexiv2) )
 	ibus? ( app-i18n/ibus )
 	json? ( dev-libs/qjson )
 	pim? ( $(add_kdeapps_dep kdepimlibs) )
@@ -42,16 +41,15 @@ src_configure() {
 		-DDBUS_INTERFACES_INSTALL_DIR="${EPREFIX}/usr/share/dbus-1/interfaces/"
 		-DWITH_Nepomuk=OFF
 		-DWITH_QtOAuth=OFF
-		$(cmake_use_with attica LibAttica)
-		$(cmake_use_with desktopglobe Marble)
-		$(cmake_use_find_package eigen Eigen2)
-		$(cmake_use_with exif Kexiv2)
-		$(cmake_use_build ibus)
-		$(cmake_use_with json QJSON)
-		$(cmake_use_with pim KdepimLibs)
-		$(cmake_use_with qalculate)
-		$(cmake_use_with qwt)
-		$(cmake_use_build scim)
+		-Dattica=$(usex attica LibAttica)
+		-Ddesktopglobe=$(usex desktopglobe Marble)
+		-Deign=$(usex eigen Eigen2)
+		-Dbuild=$(usex ibus)
+		-Djson=$(usex json QJSON)
+		-Dpim=$(usex pim KdepimLibs)
+		-Dqalculate=$(usex qalculate)
+		-Dqwt=$(usex qwt)
+	    -Dscim=$(usex scim)
 	)
 
 	kde4-base_src_configure
