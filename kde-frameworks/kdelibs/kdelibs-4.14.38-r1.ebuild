@@ -147,6 +147,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gentoo-slotted-FindPopplerQt4.patch"
 	"${FILESDIR}/${P}-gentoo-docbundledir.patch" # bug 667138
     "${FILESDIR}/${P}-gcc11.patch"
+	"${FILESDIR}/${PN}-4.14.37-kdnssd-overflow.patch"
 )
 
 src_prepare() {

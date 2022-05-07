@@ -45,6 +45,14 @@ RDEPEND="${COMMONDEPEND}
 	$(add_kdeapps_dep plasma-runtime)
 "
 
+PATCHES=(
+	"${FILESDIR}/kde-workspace-strigi.patch"
+	"${FILESDIR}/kde-workspace-4.8.0-bug796969.patch"
+	"${FILESDIR}/dbus-environment-update.patch"
+        "${FILESDIR}/etc-update.patch"
+	"${FILESDIR}/terminate-server.patch"
+)
+
 KMEXTRA="
 	appmenu/
 	ktouchpadenabler/
@@ -62,19 +70,12 @@ KMEXTRACTONLY="
 	libs/plasmagenericshell/
 	libs/ksysguard/
 	libs/kdm/kgreeterplugin.h
-	ksysguard/
-"
-PATCHES=(
-	"${FILESDIR}/kde-workspace-strigi.patch"
-	"${FILESDIR)/kde-workspace-4.8.0-bug796969.patch"
-	"${FILESDIR}/dbus-environment-update.patch"
-        "${FILESDIR}/etc-update.patch"
-	"${FILESDIR}/terminate-server.patch"
-)
+	ksysguard/"
+
 
 src_unpack() {
 	if use handbook; then
-		KMEXTRA+=" doc/plasma-desktop"
+		KMEXTRA+="doc/plasma-desktop"
 	fi
 
 	kde4-meta_src_unpack
@@ -86,6 +87,7 @@ src_configure() {
 		-DWITH_PythonLibrary=OFF
 		-DWITH_Soprano=OFF
 		-DWITH_Xmms=OFF
+		-DCMAKE_CXX_FLAGS="-fpermissive"
 		$(cmake_use_with gps libgps)
 		$(cmake_use_with json QJSON)
 		$(cmake_use_with pim Akonadi)
