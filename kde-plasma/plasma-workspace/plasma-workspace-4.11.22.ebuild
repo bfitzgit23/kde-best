@@ -64,6 +64,13 @@ KMEXTRACTONLY="
 	libs/kdm/kgreeterplugin.h
 	ksysguard/
 "
+PATCHES=(
+	"${FILESDIR}/kde-workspace-strigi.patch"
+	"${FILESDIR)/kde-workspace-4.8.0-bug796969.patch"
+	"${FILESDIR}/dbus-environment-update.patch"
+        "${FILESDIR}/etc-update.patch"
+	"${FILESDIR}/terminate-server.patch"
+)
 
 src_unpack() {
 	if use handbook; then

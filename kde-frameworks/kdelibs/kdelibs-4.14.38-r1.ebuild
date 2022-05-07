@@ -146,6 +146,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-library-doc-policy-links.patch"
 	"${FILESDIR}/${P}-gentoo-slotted-FindPopplerQt4.patch"
 	"${FILESDIR}/${P}-gentoo-docbundledir.patch" # bug 667138
+    "${FILESDIR}/${P}-gcc11.patch"
 )
 
 src_prepare() {
