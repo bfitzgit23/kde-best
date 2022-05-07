@@ -20,7 +20,6 @@ COMMONDEPEND="
 	>=dev-qt/qtcore-4.8.4-r3:4
 	kde-frameworks/kactivities:4
 	kde-plasma/kephal:4
-	kde-plasma/ksysguard:4
 	kde-plasma/libkworkspace:4
 	kde-plasma/libplasmaclock:4[pim?]
 	kde-plasma/libplasmagenericshell:4

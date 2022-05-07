@@ -31,6 +31,7 @@ KMEXTRA="
 "
 
 src_configure() {
+	-DCMAKE_CXX_FLAGS="-fpermissive"
 	local mycmakeargs=(
 		$(cmake_use_with lm-sensors Sensors)
 	)
