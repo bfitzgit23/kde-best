@@ -88,6 +88,7 @@ src_configure() {
 		-DKDE4_BUILD_TESTS=OFF
         -DCMAKE_SKIP_RPATH=ON
 		-DCMAKE_CXX_FLAGS="-fpermissive"
+		-DCMAKE_CXX_FLAGS="-std=c++14"
 		-Dgps=$(usex gps libgps)
 		-Djson=$(usex json QJSON)
 		-Dpim=$(usex pim KdepimLibs)
